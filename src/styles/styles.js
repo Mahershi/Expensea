@@ -17,6 +17,63 @@ export const buttonStyle = StyleSheet.create({
     }
 })
 
+export const expenseStyles2 = StyleSheet.create({
+    editIconStyle: {
+        color: Color.textColor,
+        alignSelf: 'center'
+    },
+
+
+
+    editIconBgStyle: {
+        backgroundColor: Color.primaryColorShade,
+        height: 36,
+        width: 36,
+        borderRadius: 18,
+        // alignItems: 'center',
+        justifyContent: 'center'
+    },
+
+    dashboardListStyle: {
+        paddingBottom: 0,
+        paddingLeft: 20,
+        paddingRight: 20,
+        paddingTop: 20
+    },
+
+    headContainerStyle: {
+        padding: 12,
+        borderBottomRightRadius: 12,
+        borderTopRightRadius: 12,
+        backgroundColor: Color.textColor,
+        alignSelf: 'flex-start'
+    },
+
+    headDayStyle: {
+        color: Color.primaryColor,
+        fontSize: 20
+    },
+
+    expenseNameStyle: {
+        color: Color.textColor,
+        fontSize: 16
+    },
+
+    expenseCategoryStyle: {
+        color: Color.primaryColorShade,
+        fontSize: 12
+    },
+
+    expenseTileStyle: {
+        // margin: 20,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        // borderWidth: 1,
+        // borderColor: Color.primaryColor,
+        flex: 1
+    },
+})
+
 
 export const expenseStyles = StyleSheet.create({
     editIconStyle: {
@@ -59,6 +116,7 @@ export const expenseStyles = StyleSheet.create({
         color: Color.textColor,
         fontSize: 18
     },
+
 
     headDayStyle: {
         color: Color.textColor50,
@@ -119,8 +177,14 @@ export const monthYearControlStyles = StyleSheet.create({
     totalTextStyle: {
         fontSize: 32,
         color: Color.textColor
+    },
+
+    carouselContainer: {
+        flexDirection: "column"
     }
 })
+
+
 
 export const monthExpensePage = StyleSheet.create({
     topContainer: {
@@ -133,8 +197,8 @@ export const monthExpensePage = StyleSheet.create({
     },
 
     bottomContainer: {
-        alignItems: 'center',
         padding: 20,
+        alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'row',
         backgroundColor: Color.textColor,

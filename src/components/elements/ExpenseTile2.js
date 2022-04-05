@@ -1,11 +1,11 @@
-import React, {Component} from "react";
+import React, {Component} from 'react';
 import {View, Text} from 'react-native';
-import {expenseStyles} from "../../styles/styles";
-import CustomSpacer from "./CustomSpacer";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import Color from "../../constants/colors";
+import {expenseStyles2} from "../../styles/styles";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import CustomSpacer from "./CustomSpacer";
 
-export default class ExpenseTile extends Component{
+export default class ExpenseTile2 extends Component{
     render() {
         return (
             <View
@@ -13,21 +13,21 @@ export default class ExpenseTile extends Component{
                     flexDirection: "row",
                     margin: 20,
                     alignItems: 'center',
-                    backgroundColor: Color.textColor
+                    backgroundColor: Color.primaryColor
                 }}
             >
                 <View
-                    style={expenseStyles.editIconBgStyle}
+                    style={expenseStyles2.editIconBgStyle}
                 >
                     <Icon
-                        style={expenseStyles.editIconStyle}
+                        style={expenseStyles2.editIconStyle}
                         name='pencil'
                         size={20}
                     />
                 </View>
                 <CustomSpacer width={12}/>
                 <View
-                    style={expenseStyles.expenseTileStyle}
+                    style={expenseStyles2.expenseTileStyle}
                 >
                     <View
                         style={{
@@ -35,11 +35,11 @@ export default class ExpenseTile extends Component{
                         }}
                     >
                         <Text
-                            style={expenseStyles.expenseNameStyle}
+                            style={expenseStyles2.expenseNameStyle}
                         >{this.props.name}</Text>
                         <CustomSpacer height={8}/>
                         <Text
-                            style={expenseStyles.expenseCategoryStyle}
+                            style={expenseStyles2.expenseCategoryStyle}
                         >Category</Text>
                     </View>
 
@@ -50,11 +50,11 @@ export default class ExpenseTile extends Component{
                         }}
                     >
                         <Text
-                            style={expenseStyles.expenseNameStyle}
+                            style={expenseStyles2.expenseNameStyle}
                         >$ 12.75</Text>
                         <CustomSpacer height={8}/>
                         <Text
-                            style={expenseStyles.expenseCategoryStyle}
+                            style={expenseStyles2.expenseCategoryStyle}
                         >Cluster</Text>
                     </View>
                 </View>

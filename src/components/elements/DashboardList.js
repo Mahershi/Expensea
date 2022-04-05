@@ -106,6 +106,10 @@ export default class DashboardList extends Component{
             <SwipeListView
                 style={expenseStyles.dashboardListStyle}
                 useSectionList
+                keyExtractor={(item, index) =>{
+                    console.log(item+index);
+                    return item+index;
+                }}
                 sections={
                     this.arr
                 }
