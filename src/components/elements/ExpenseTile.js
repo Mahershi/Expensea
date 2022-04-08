@@ -4,9 +4,20 @@ import {expenseStyles} from "../../styles/styles";
 import CustomSpacer from "./CustomSpacer";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import Color from "../../constants/colors";
+import ExpenseModel from "../../models/ExpenseModel";
+import CategoryModel from "../../models/CategoryModel";
+import ClusterModel from "../../models/ClusterModel";
 
 export default class ExpenseTile extends Component{
+    constructor(props) {
+        super(props);
+        const {data} = this.props;
+        this.expense = new ExpenseModel.fromJson(data);
+        console.log("Exp");
+        console.log(this.expense);
+    }
     render() {
+
         return (
             <View
                 style={{
@@ -36,11 +47,15 @@ export default class ExpenseTile extends Component{
                     >
                         <Text
                             style={expenseStyles.expenseNameStyle}
-                        >{this.props.name}</Text>
+                        >{this.expense.name}</Text>
                         <CustomSpacer height={8}/>
                         <Text
                             style={expenseStyles.expenseCategoryStyle}
-                        >Category</Text>
+                        >{
+                            (CategoryModel.getObjectById({id:this.expense.categoryId}))
+                            ? (CategoryModel.getObjectById({id:this.expense.categoryId})).name
+                                : ''
+                        }</Text>
                     </View>
 
                     <View
@@ -51,11 +66,15 @@ export default class ExpenseTile extends Component{
                     >
                         <Text
                             style={expenseStyles.expenseNameStyle}
-                        >$ 12.75</Text>
+                        >{'$ ' + this.expense.amount}</Text>
                         <CustomSpacer height={8}/>
                         <Text
                             style={expenseStyles.expenseCategoryStyle}
-                        >Cluster</Text>
+                        >{
+                            (ClusterModel.getObjectById({id:this.expense.clusterId}))
+                            ? (ClusterModel.getObjectById({id:this.expense.clusterId})).name
+                                : ""
+                        }</Text>
                     </View>
                 </View>
             </View>

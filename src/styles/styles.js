@@ -149,11 +149,13 @@ export const textStyles = StyleSheet.create({
     expenseHead: {
         fontSize: 28,
         letterSpacing: 1.05,
+        alignSelf: 'center'
     },
 
     monthHead: {
         fontSize: 16,
-        letterSpacing: 1.05
+        letterSpacing: 1.05,
+        alignSelf: "center"
     },
 
 

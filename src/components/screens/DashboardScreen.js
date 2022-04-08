@@ -5,15 +5,32 @@ import MonthExpenseBrief from "../elements/MonthExpenseBrief";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import DashboardList from "../elements/DashboardList";
 import AddExpenseButtonComponent from "../elements/AddExpenseButtonComponent";
-// import Icon from 'react-native-vector-icons/Ionicons';
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
+import {dashboardLoaded, loadDashboard} from "../../actions/dashboardActions";
+import DashboardController from "../../controllers/dashboard_controller";
+import CustomLoader from "../elements/CustomLoader";
 
 
-export default class DashboardScreen extends Component{
+class DashboardScreen extends Component{
+    constructor(props) {
+        super(props);
+        const {reducer, actions, navigation} = this.props;
+        this.controller = new DashboardController({actions: actions, navigation: navigation, reducer: reducer});
+        // console.log("Dashboard Reducer")
+        // console.log(reducer);
+    }
+
     render() {
+        const {reducer} = this.props;
+        // console.log("RE Dashboard Reducer")
+        // console.log(reducer);
+
         return (
           <View
             style={{flex: 1}}
           >
+              {reducer.loading ? <CustomLoader invert={false}/> : null}
               <View
                 style={dashboardPage.bottomContainer}
               >
@@ -21,7 +38,7 @@ export default class DashboardScreen extends Component{
                   <View
                     style={{flex: 1}}
                   ></View>
-                  <MonthExpenseBrief />
+                  <MonthExpenseBrief month={reducer['data']['month']} total={reducer['data']['monthTotal']}/>
                   <View
                       style={{flex: 1}}
                   ></View>
@@ -34,9 +51,24 @@ export default class DashboardScreen extends Component{
                   style={dashboardPage.topContainer}
 
               >
-                  <DashboardList />
+                  <DashboardList data={reducer['data']['days']}/>
               </View>
           </View>
         );
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        reducer: state.dashboardReducer
+    };
+}
+
+const ActionCreators = Object.assign({}, {loadDashboard, dashboardLoaded});
+
+const mapDispatchToProps = dispatch => ({
+    actions: bindActionCreators(ActionCreators, dispatch),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardScreen)
+

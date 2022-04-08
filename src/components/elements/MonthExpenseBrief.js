@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {View, Text} from 'react-native';
 import {textStyles} from "../../styles/styles";
 import CustomSpacer from "./CustomSpacer";
+import GlobalVars from "../../helpers/GlobalVars";
 
 export default class MonthExpenseBrief extends Component{
     render() {
@@ -10,13 +11,13 @@ export default class MonthExpenseBrief extends Component{
                 <Text
                     style={textStyles.monthHead}
                 >
-                    April's Expenses
+                    {GlobalVars.months[this.props.month] + '\'s Expenses'}
                 </Text>
                 <CustomSpacer height={10}/>
                 <Text
                     style={textStyles.expenseHead}
                 >
-                    $ 750.00
+                    {'$ ' + this.props.total}
                 </Text>
             </View>
         );

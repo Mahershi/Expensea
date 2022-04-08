@@ -9,116 +9,40 @@ import ButtonComponent from "./ButtonComponent";
 export default class DashboardList extends Component{
     arr = [
         {
-            title: '23-02-2022',
+            head: {
+                'date': '1212',
+                'total': '2111'
+            },
+            more: [
+                {name: 'name'},
+                {name: 'name2'},
+            ],
             data: [
-                'Exp1',
-                'Exp2',
-                'Exp2'
-            ]
+                '/',
+                'ss'
+            ],
         },
-        {
-            title: '21-02-2022',
-            data: [
-                'Exp1',
-                'Exp2'
-            ]
-        },
-        {
-            title: '05-02-2022',
-            data: [
-                'Exp1',
-                'Exp2',
-                'Exp2'
-            ]
-        },
-        {
-            title: '23-02-2022',
-            data: [
-                'Exp1',
-                'Exp2',
-                'Exp2'
-            ]
-        },
-        {
-            title: '21-02-2022',
-            data: [
-                'Exp1',
-                'Exp2'
-            ]
-        },
-        {
-            title: '05-02-2022',
-            data: [
-                'Exp1',
-                'Exp2',
-                'Exp2'
-            ]
-        },
-        {
-            title: '23-02-2022',
-            data: [
-                'Exp1',
-                'Exp2',
-                'Exp2'
-            ]
-        },
-        {
-            title: '21-02-2022',
-            data: [
-                'Exp1',
-                'Exp2'
-            ]
-        },
-        {
-            title: '05-02-2022',
-            data: [
-                'Exp1',
-                'Exp2',
-                'Exp2'
-            ]
-        },
-        {
-            title: '23-02-2022',
-            data: [
-                'Exp1',
-                'Exp2',
-                'Exp2'
-            ]
-        },
-        {
-            title: '21-02-2022',
-            data: [
-                'Exp1',
-                'Exp2'
-            ]
-        },
-        {
-            title: '05-02-2022',
-            data: [
-                'Exp1',
-                'Exp2',
-                'Exp2'
-            ]
-        },
+
     ]
+
+
+
     render() {
         return (
             <SwipeListView
                 style={expenseStyles.dashboardListStyle}
                 useSectionList
                 keyExtractor={(item, index) =>{
-                    console.log(item+index);
                     return item+index;
                 }}
                 sections={
-                    this.arr
+                    this.props.data
                 }
                 renderItem={(item)=>{
-                    console.log(item);
-                    return <ExpenseTile name={item.item}/>
+                    return <ExpenseTile id={item.item} data={item.section.extra[item.index]}/>
                 }}
                 renderSectionHeader={({section})=>(
-                    <ListHeader date={section.title}/>
+                    <ListHeader date={section.head.date}/>
                 )}
                 renderHiddenItem={(data, rowmap)=>{
                     return <View
