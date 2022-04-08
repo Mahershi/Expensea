@@ -1,10 +1,28 @@
 import {RestService} from "../network/config";
 import {API} from "../network/APIs";
 import GlobalVars from "../helpers/GlobalVars";
-
+import ExpenseModel from "../models/ExpenseModel";
 
 // TODO: UnComment Global Var
 export default class ExpenseService {
+    static async createNew({expense}){
+        console.log("TOJSON");
+        console.log(expense.toJson());
+        return await RestService.request({
+            endpoint: API.expenses,
+            method: 'post',
+            data: expense.toJson()
+        })
+    }
+
+    static async updateExpense({expense}){
+        return await RestService.request({
+            endpoint: API.expenses + expense.id + '/',
+            method: 'patch',
+            data: expense.toJson()
+        })
+    }
+
     static async fetchCurrentMonthExpenses() {
         const today = new Date();
         console.log("Cur month");

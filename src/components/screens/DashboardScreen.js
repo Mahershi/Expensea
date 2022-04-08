@@ -34,22 +34,17 @@ class DashboardScreen extends Component{
               <View
                 style={dashboardPage.bottomContainer}
               >
-                  <AddExpenseButtonComponent invert={true}/>
-                  <View
-                    style={{flex: 1}}
-                  ></View>
+                  <AddExpenseButtonComponent invert={true} callBack={this.controller.gotoAddEditScreenBind}/>
+                  <View style={{flex: 1}}/>
                   <MonthExpenseBrief month={reducer['data']['month']} total={reducer['data']['monthTotal']}/>
-                  <View
-                      style={{flex: 1}}
-                  ></View>
+                  <View style={{flex: 1}}/>
                   <Icon
                       name='account'
                       size={54}
-                  ></Icon>
+                  />
               </View>
               <View
                   style={dashboardPage.topContainer}
-
               >
                   <DashboardList data={reducer['data']['days']}/>
               </View>

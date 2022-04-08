@@ -14,6 +14,16 @@ export default class DashboardController {
         this.reducer = reducer;
 
         let i = this.loadInitial();
+        this.gotoAddEditScreenBind = this.gotoAddEditScreen.bind(this);
+        this.refreshBind = this.refreshDashboardOnNavigatingBack.bind(this);
+    }
+
+    gotoAddEditScreen(){
+        let e = ExpenseModel.newDefault();
+        this.navigation.navigate('AddEditExpenseScreen', {
+            expense: e,
+            dashboardRefreshCallback: this.refreshBind
+        });
     }
 
     async loadInitial(){
@@ -22,6 +32,13 @@ export default class DashboardController {
         this.fetchUserClusters();
         await this.fetchCurrentMonthExpenses();
         this.actions.dashboardLoaded(this.data['data']);
+    }
+
+    async refreshDashboardOnNavigatingBack(){
+        console.log("Refreshing");
+        this.actions.loadDashboard();
+        await this.fetchCurrentMonthExpenses();
+        this.actions.dashboardLoaded(this.data['data'])
     }
 
     async initAllCategories(){

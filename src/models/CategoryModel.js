@@ -25,10 +25,8 @@ export default class CategoryModel{
     }
 
     static getObjectById({id, arr = GlobalVars.categories}){
-        console.log("Called " + id)
         for(let i=0; i<arr.length; i++){
             if(arr[i].id == id){
-                console.log("Reu: " + arr[i].name)
                 return arr[i];
             }
         }

@@ -17,7 +17,7 @@ export default class App extends Component{
               screenOptions={{
                   headerShown: false,
               }}
-              initialRouteName='AddEditExpenseScreen'
+              initialRouteName='DashboardScreen'
             >
               <Stack.Screen
                   name="DashboardScreen"

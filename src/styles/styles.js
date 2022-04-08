@@ -220,7 +220,7 @@ export const dashboardPage = StyleSheet.create({
         borderTopRightRadius: 20,
         borderTopLeftRadius: 20,
         backgroundColor: Color.textColor,
-        height: Dimensions.get('window').height * 0.84,
+        height: Dimensions.get('window').height * 0.84 - 20,
     },
 
     bottomContainer: {

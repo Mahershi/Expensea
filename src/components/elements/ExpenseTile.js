@@ -13,8 +13,6 @@ export default class ExpenseTile extends Component{
         super(props);
         const {data} = this.props;
         this.expense = new ExpenseModel.fromJson(data);
-        console.log("Exp");
-        console.log(this.expense);
     }
     render() {
 

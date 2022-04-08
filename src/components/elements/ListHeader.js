@@ -24,7 +24,7 @@ export default class ListHeader extends Component{
                 </View>
                 <Text
                     style={expenseStyles.headTotalStyle}
-                >$ 635.45</Text>
+                >{'$' + this.props.total}</Text>
             </View>
         )
     }

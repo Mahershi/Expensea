@@ -1,3 +1,5 @@
+import GlobalVars from "../helpers/GlobalVars";
+
 export default class ExpenseModel{
     name;
     id;
@@ -12,8 +14,6 @@ export default class ExpenseModel{
 
     static fromJson(json){
         let e = new ExpenseModel();
-        console.log("JSON");
-        console.log(json);
         e.amount = json['amount'] ? json['amount'] : '0';
         e.name = json['name'] ? json['name'] : '';
         e.id = json['id'] ? json['id'] : '';
@@ -28,15 +28,48 @@ export default class ExpenseModel{
         return e;
     }
 
+    static fromProp(json){
+        let e = new ExpenseModel();
+        e.amount = json['amount'] ? json['amount'] : '0';
+        e.name = json['name'] ? json['name'] : '';
+        e.id = json['id'] ? json['id'] : null;
+        e.userId = json['userId'] ? json['userId'] : '';
+        e.categoryId = json['categoryId'] ? json['categoryId'] : '';
+        e.expenseDate = json['expenseDate'] ? json['expenseDate'] : '';
+        e.clusterId = json['clusterId'] ? json['clusterId'] : null;
+
+
+        return e;
+    }
+
+    // TODO: GlobalVars setup
+    static newDefault(){
+        let e = new ExpenseModel();
+        e.id = null;
+        e.name = '';
+        e.amount = '';
+        // e.userId = GlobalVars.currentUser.id;
+        e.userId = 1;
+        e.categoryId = 1;
+        e.clusterId = null;
+        e.expenseDate = new Date();
+
+        return e;
+    }
+
     toJson(){
         let dict = {};
-        dict['id'] = this.id;
+        // dict['id'] = this.id;
         dict['name'] = this.name;
-        dict['amount'] = this.amount;
-        dict['user_id'] = this.userId;
+        dict['amount'] = parseInt(this.amount);
+        dict['user_id'] = parseInt(this.userId);
         dict['category'] = this.categoryId;
         dict['expense_date'] = this.expenseDate;
         dict['cluster'] = this.clusterId;
+
+        return dict;
     }
+
+
 
 }
