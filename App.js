@@ -7,6 +7,9 @@ import DashboardScreen from "./src/components/screens/DashboardScreen";
 import MonthlyExpensesScreen from "./src/components/screens/MonthlyExpensesScreen";
 import AddEditExpenseScreen from "./src/components/screens/AddEditExpenseScreen";
 import {LogBox} from "react-native";
+import MenuScreen from "./src/components/screens/MenuScreen";
+import MyClustersScreen from "./src/components/screens/MyClustersScreen";
+import ClusterDetailScreen from "./src/components/screens/ClusterDetailScreen";
 
 LogBox.ignoreAllLogs(true);
 const Stack = createNativeStackNavigator();
@@ -19,11 +22,23 @@ export default class App extends Component{
               screenOptions={{
                   headerShown: false,
               }}
-              initialRouteName='MonthExpenseScreen'
+              initialRouteName='ClusterDetailScreen'
             >
               <Stack.Screen
                   name="DashboardScreen"
                   component={DashboardScreen}
+              />
+              <Stack.Screen
+                  name="ClusterDetailScreen"
+                  component={ClusterDetailScreen}
+              />
+              <Stack.Screen
+                  name="MyClustersScreen"
+                  component={MyClustersScreen}
+              />
+              <Stack.Screen
+                  name="MenuScreen"
+                  component={MenuScreen}
               />
               <Stack.Screen
                   name="AddEditExpenseScreen"

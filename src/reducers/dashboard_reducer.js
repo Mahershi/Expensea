@@ -13,7 +13,11 @@ const dashboardReducer = (state = INITIAL_STATE, action) => {
     switch(action.type){
         case LOADING:
             return {
-                ...state,
+                data: {
+                    'monthTotal': 0,
+                    'days': [],
+                    'month': 0
+                },
                 loading: true,
             }
         case LOADED:

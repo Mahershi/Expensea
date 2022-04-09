@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {dashboardPage} from "../../styles/styles";
-import {View} from 'react-native';
+import {TouchableNativeFeedback, View} from 'react-native';
 import MonthExpenseBrief from "../elements/MonthExpenseBrief";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import DashboardList from "../elements/DashboardList";
@@ -49,10 +49,17 @@ class DashboardScreen extends Component{
                   <View style={{flex: 1}}/>
                   <MonthExpenseBrief month={reducer['data']['month']} total={reducer['data']['monthTotal']}/>
                   <View style={{flex: 1}}/>
-                  <Icon
-                      name='account'
-                      size={54}
-                  />
+                  <TouchableNativeFeedback
+                    onPress={()=>{
+                        this.props.navigation.navigate('MenuScreen');
+                    }}
+                  >
+                      <Icon
+                          name='account'
+                          size={54}
+                      />
+                  </TouchableNativeFeedback>
+
               </View>
               <View
                   style={dashboardPage.topContainer}
