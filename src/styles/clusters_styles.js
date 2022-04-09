@@ -2,6 +2,44 @@ import React from 'react';
 import {StyleSheet, Dimensions} from "react-native";
 import Color from "../constants/colors";
 
+export const editCluster = StyleSheet.create({
+    root: {
+        padding: 20,
+        flex: 1,
+        height: Dimensions.get('window').height,
+        backgroundColor: Color.textColor
+    },
+
+    head: {
+        fontSize: 28,
+        color: Color.primaryColor
+    },
+
+    topRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+
+    subTopRow: {
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+
+    inputView: {
+
+    },
+
+    input: {
+        borderRadius: 12,
+        borderColor: Color.primaryColor30,
+        borderWidth: 1,
+        color: Color.primaryColor,
+        fontSize: 24,
+        alignItems: 'center',
+        padding: 12
+    }
+})
+
 export const clusterDetail = StyleSheet.create({
     root: {
         flex: 1,

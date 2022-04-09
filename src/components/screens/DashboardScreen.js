@@ -4,13 +4,13 @@ import {Text, TouchableNativeFeedback, View} from 'react-native';
 import MonthExpenseBrief from "../elements/MonthExpenseBrief";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import DashboardList from "../elements/DashboardList";
-import AddExpenseButtonComponent from "../elements/AddExpenseButtonComponent";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {dashboardLoaded, loadDashboard} from "../../actions/dashboardActions";
 import DashboardController from "../../controllers/dashboard_controller";
 import CustomLoader from "../elements/CustomLoader";
 import PreviousMonths from "../elements/PreviousMonths";
+import AddButtonComponent from "../elements/AddButtonComponent";
 
 
 class DashboardScreen extends Component{
@@ -37,7 +37,8 @@ class DashboardScreen extends Component{
         const {reducer} = this.props;
         // console.log("RE Dashboard Reducer")
         // console.log(reducer);
-
+        console.log("Rendering Dashboard");
+        console.log(reducer);
         return (
           <View
             style={{flex: 1}}
@@ -46,16 +47,15 @@ class DashboardScreen extends Component{
               <View
                 style={dashboardPage.bottomContainer}
               >
-                  <AddExpenseButtonComponent invert={true} callBack={this.controller.gotoAddEditScreenBind}/>
+                  <AddButtonComponent invert={true} callBack={this.controller.gotoAddEditScreenBind}/>
                   <View style={{flex: 1}}/>
                   <MonthExpenseBrief month={reducer['data']['month']} total={reducer['data']['monthTotal']}/>
                   <View style={{flex: 1}}/>
                   <TouchableNativeFeedback
                     onPress={()=>{
-                        this.props.navigation.navigate('MenuScreen');
+                        this.props.navigation.push('MenuScreen');
                     }}
                   >
-
                       <Icon
                           name='account'
                           size={54}

@@ -63,7 +63,7 @@ export default class MonthYearControlElement extends Component{
                     style={monthYearControlStyles.carouselContainer}
                 >
                     <Carousel
-                        firstItem={this.curYear}
+                        firstItem={this.years.indexOf(this.curYear)}
                         ref={(c)=>{this.yearCarousel = c;}}
                         data={this.years}
                         renderItem={({item, index})=>{

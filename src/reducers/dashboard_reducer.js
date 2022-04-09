@@ -23,7 +23,11 @@ const dashboardReducer = (state = INITIAL_STATE, action) => {
         case LOADED:
             return {
                 loading: false,
-                data: action.payload
+                data: action.payload === undefined ? {
+                    'monthTotal': 0,
+                    'days': [],
+                    'month': 0
+                } : action.payload
             }
         default:
             return state;

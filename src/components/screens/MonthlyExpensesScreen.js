@@ -10,7 +10,6 @@ import DayHeader from "../elements/DayHeader";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons"
 import Color from "../../constants/colors";
 import MonthlyExpenseController from "../../controllers/monthly_expense_controller";
-import {dashboardLoaded, loadDashboard} from "../../actions/dashboardActions";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {loadMonthlyExpense, monthlyExpenseLoaded} from "../../actions/monthExpenseActions";

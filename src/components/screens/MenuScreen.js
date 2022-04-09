@@ -17,7 +17,13 @@ export default class MenuScreen extends Component{
                     <View style={{
                         alignSelf: 'flex-start'
                     }}>
-                        <BackButtonComponent invert={true} navigation={this.props.navigation} enable={true}/>
+                        <BackButtonComponent
+                            invert={true}
+                            callback={()=>{
+                                this.props.navigation.navigate('DashboardScreen', {update: true})
+                            }}
+                            enable={true}
+                        />
                     </View>
                     <View style={{flex: 1}}></View>
                     <View style={menuStyles.profile}>
@@ -44,7 +50,13 @@ export default class MenuScreen extends Component{
                     </View>
                 </View>
                 <View style={menuStyles.topContainer}>
-                    <MenuButton title={'My Clusters'} iconName='format-list-bulleted'/>
+                    <MenuButton
+                        title={'My Clusters'}
+                        iconName='format-list-bulleted'
+                        callback={()=>{
+                            this.props.navigation.push('MyClustersScreen')
+                        }}
+                    />
                     <LogoutButton />
                 </View>
 

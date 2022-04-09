@@ -40,9 +40,7 @@ class PrevMonthTile extends Component{
                 }}
             >
                 <View style={prevMonths.tileBg}>
-
                     <Text style={prevMonths.head}>{GlobalVars.monthsShort[this.props.item['month']]}</Text>
-                    <CustomSpacer height={10}/>
                     {/*<Text style={prevMonths.value}>{'$ ' + this.props.item.value}</Text>*/}
                     <CustomSpacer height={10}/>
                     <View style={prevMonths.subRow}>

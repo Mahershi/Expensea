@@ -10,7 +10,7 @@ export default class IconButtonComponent extends Component{
         return (
             <TouchableNativeFeedback
                 onPress={()=>{
-
+                    this.props.callback()
                 }
                 }
             >
@@ -19,7 +19,6 @@ export default class IconButtonComponent extends Component{
                         backgroundColor: Color.textColor,
                         padding: 12,
                         borderRadius: 20,
-
                     }}
                 >
                     <Icon

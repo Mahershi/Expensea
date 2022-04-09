@@ -1,19 +1,23 @@
 import React, {Component} from "react";
-import {View, Text} from 'react-native';
+import {View, Text, TouchableNativeFeedback} from 'react-native';
 import {myClusters} from "../../styles/clusters_styles";
 import BackButtonComponent from "../elements/BackButtonComponent";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import Color from "../../constants/colors";
 import CustomSpacer from "../elements/CustomSpacer";
 import {SwipeListView} from "react-native-swipe-list-view";
 import {expenseStyles} from "../../styles/styles";
-import ExpenseTile from "../elements/ExpenseTile";
-import ListHeader from "../elements/ListHeader";
-import ButtonComponent from "../elements/ButtonComponent";
 import ClusterTile from "../elements/ClusterTile";
 import IconButtonComponent from "../elements/IconButtonComponent";
+import MyClusterController from "../../controllers/my_clusters_controller";
+import {bindActionCreators} from "redux";
+import {loadMyClusters, myClustersLoaded} from "../../actions/myClusterActions";
+import {connect} from "react-redux";
+import CustomLoader from "../elements/CustomLoader";
+import GlobalVars from "../../helpers/GlobalVars";
+import AddButtonComponent from "../elements/AddButtonComponent";
+import Color from "../../constants/colors";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
-export default class MyClustersScreen extends Component{
+class MyClustersScreen extends Component{
     arr = [
         {
             title: 'One',
@@ -26,16 +30,36 @@ export default class MyClustersScreen extends Component{
     ]
     constructor(props) {
         super(props);
+        const {reducer, actions, navigation} = this.props;
+        this.controller = new MyClusterController({
+            navigation: navigation,
+            reducer: reducer,
+            actions: actions
+        });
+    }
+
+    componentDidUpdate(prevProps: Readonly<P>, prevState: Readonly<S>, snapshot: SS) {
+        if(this.props.route.params?.update == true){
+            this.controller.reloadBind();
+            this.props.route.params.update = false;
+        }
 
     }
+
     render() {
+        const {reducer} = this.props;
+        console.log("Reducer");
+        console.log(JSON.stringify(reducer));
         return (
             <View style={myClusters.root}>
+                {reducer.loading ? <CustomLoader invert={true}/> : null}
                 <View style={myClusters.bottomContainer}>
                     <View style={{
                         marginTop: -20
                     }}>
-                        <BackButtonComponent invert={false} navigation={this.props.navigation} enable={true}/>
+                        <BackButtonComponent invert={false} callback={()=>{
+                            this.props.navigation.goBack();
+                        }} enable={true}/>
                     </View>
                     <View style={{flex: 1}}></View>
                     <View style={myClusters.head}>
@@ -49,27 +73,31 @@ export default class MyClustersScreen extends Component{
                     <View style={{
                         marginTop: -20
                     }}>
-                        <BackButtonComponent invert={false} navigation={this.props.navigation} enable={true}/>
+                        <AddButtonComponent invert={false} callBack={this.controller.addNewBind}/>
                     </View>
                 </View>
                 <View style={myClusters.topContainer}>
                     <SwipeListView
                         style={expenseStyles.dashboardListStyle}
 
-                        // keyExtractor={(item, index) =>{
-                        //     // console.log(item);
-                        //     console.log("key: " + item+index);
-                        //     return item+index;
-                        // }}
+                        keyExtractor={(item, index) =>{
+                            return item+index;
+                        }}
 
-                        data={this.arr}
+                        data={GlobalVars.clusters}
                         renderItem={(item)=>{
-                            console.log("ITEM");
-                            console.log(item.index);
-                            console.log(item);
-                            return <ClusterTile name="Nane" count={51}/>
+                            return <TouchableNativeFeedback
+                                onPress={()=>{
+                                    // goto cluster detail screen, use bind function and pass only id
+                                }
+                                }
+                            >
+                                <ClusterTile name={item.item.name} count={item.item.expenses}/>
+                            </TouchableNativeFeedback>
                         }}
                         renderHiddenItem={(data, rowmap)=>{
+                            console.log("DATA");
+                            console.log(JSON.stringify(data))
                             return <View
                                 style={{
                                     flexDirection: "row",
@@ -78,8 +106,46 @@ export default class MyClustersScreen extends Component{
                                     flex: 1
                                 }}
                             >
-                                <IconButtonComponent iconName='pen'/>
-                                <IconButtonComponent iconName='delete'/>
+                                <TouchableNativeFeedback
+                                    onPress={()=>{
+                                        this.controller.editClusterBind({cluster: data.item})
+                                    }
+                                    }
+                                >
+                                    <View
+                                        style={{
+                                            backgroundColor: Color.textColor,
+                                            padding: 12,
+                                            borderRadius: 20,
+                                        }}
+                                    >
+                                        <Icon
+                                            name='pen'
+                                            size={32}
+                                            color={Color.primaryColor}
+                                        />
+                                    </View>
+                                </TouchableNativeFeedback>
+                                <TouchableNativeFeedback
+                                    onPress={()=>{
+                                        this.controller.deleteCluster({id: data.item.id})
+                                    }
+                                    }
+                                >
+                                    <View
+                                        style={{
+                                            backgroundColor: Color.textColor,
+                                            padding: 12,
+                                            borderRadius: 20,
+                                        }}
+                                    >
+                                        <Icon
+                                            name='delete'
+                                            size={32}
+                                            color={Color.primaryColor}
+                                        />
+                                    </View>
+                                </TouchableNativeFeedback>
                             </View>
                         }}
                         leftOpenValue={75}
@@ -93,3 +159,17 @@ export default class MyClustersScreen extends Component{
         );
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        reducer: state.myClusterReducer
+    };
+}
+
+const ActionCreators = Object.assign({}, {loadMyClusters, myClustersLoaded});
+
+const mapDispatchToProps = dispatch => ({
+    actions: bindActionCreators(ActionCreators, dispatch),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MyClustersScreen)

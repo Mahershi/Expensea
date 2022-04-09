@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {View, Text} from "react-native";
+import {View, Text, TouchableNativeFeedback} from "react-native";
 import {menuButton} from "../../styles/menustyles";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Color from "../../constants/colors";
@@ -15,24 +15,30 @@ export default class MenuButton extends Component{
     }
     render() {
         return (
-            <View style={menuButton.root}>
-                <View style={menuButton.rowLeft}>
-                    <View style={menuButton.iconBg}>
-                        <Icon
-                            name={this.iconName}
-                            size={22}
-                            color={Color.textColor}
-                        />
+            <TouchableNativeFeedback
+                onPress={()=>{
+                    this.props.callback();
+                }}
+            >
+                <View style={menuButton.root}>
+                    <View style={menuButton.rowLeft}>
+                        <View style={menuButton.iconBg}>
+                            <Icon
+                                name={this.iconName}
+                                size={22}
+                                color={Color.textColor}
+                            />
+                        </View>
+                        <CustomSpacer width={16}/>
+                        <Text style={menuButton.title}>{this.title}</Text>
                     </View>
-                    <CustomSpacer width={16}/>
-                    <Text style={menuButton.title}>{this.title}</Text>
+                    <Icon
+                        name='chevron-right'
+                        color={Color.primaryColor}
+                        size={32}
+                    />
                 </View>
-                <Icon
-                    name='chevron-right'
-                    color={Color.primaryColor}
-                    size={32}
-                />
-            </View>
+            </TouchableNativeFeedback>
         );
     }
 }

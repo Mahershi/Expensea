@@ -3,7 +3,7 @@ import {TouchableNativeFeedback, View} from 'react-native';
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import Color from "../../constants/colors";
 
-export default class AddExpenseButtonComponent extends Component{
+export default class AddButtonComponent extends Component{
     render() {
         return (
             <View

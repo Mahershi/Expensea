@@ -10,6 +10,7 @@ import {LogBox} from "react-native";
 import MenuScreen from "./src/components/screens/MenuScreen";
 import MyClustersScreen from "./src/components/screens/MyClustersScreen";
 import ClusterDetailScreen from "./src/components/screens/ClusterDetailScreen";
+import AddEditClusterScreen from "./src/components/screens/AddEditClusterScreen";
 
 LogBox.ignoreAllLogs(true);
 const Stack = createNativeStackNavigator();
@@ -35,6 +36,10 @@ export default class App extends Component{
               <Stack.Screen
                   name="MyClustersScreen"
                   component={MyClustersScreen}
+              />
+              <Stack.Screen
+                  name="AddEditClusterScreen"
+                  component={AddEditClusterScreen}
               />
               <Stack.Screen
                   name="MenuScreen"

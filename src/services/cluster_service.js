@@ -14,4 +14,27 @@ export default class ClusterService{
             }
         })
     }
+
+    static async createCluster({data}){
+        return await RestService.request({
+            endpoint: API.clusters,
+            method: 'post',
+            data: data
+        })
+    }
+
+    static async updateCluster({data, id}){
+        return await RestService.request({
+            endpoint: API.clusters + id + '/',
+            method: 'patch',
+            data: data
+        })
+    }
+
+    static async deleteCluster({id}) {
+        return await RestService.request({
+            endpoint: API.clusters + id + '/',
+            method: 'delete',
+        })
+    }
 }
