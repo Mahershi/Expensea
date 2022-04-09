@@ -22,7 +22,10 @@ export default class DashboardController {
         let e = ExpenseModel.newDefault();
         this.navigation.navigate('AddEditExpenseScreen', {
             expense: e,
-            dashboardRefreshCallback: this.refreshBind
+            backToDashboard: true,
+            backToMonthly: false,
+            // not really using refreshCallback anymore due to binding issues
+            dashboardRefreshCallback: this.refreshBind,
         });
     }
 
@@ -31,6 +34,7 @@ export default class DashboardController {
         this.initAllCategories();
         this.fetchUserClusters();
         await this.fetchCurrentMonthExpenses();
+        this.fetchUserDateSpan();
         this.actions.dashboardLoaded(this.data['data']);
     }
 
@@ -61,30 +65,42 @@ export default class DashboardController {
         }
     }
 
-    async fetchCurrentMonthExpenses(){
-        this.data = await ExpenseService.fetchForMonthDayWise();
-        // console.log('DAYA');
-        // console.log(this.data);
-        let newData = []
-        Object.keys(this.data['data']['days']).forEach((e)=>{
-            // console.log(e);
-            let temp = {}
-            temp['extra'] = this.data['data']['days'][e]['expenses'];
-            temp['data'] = []
-            this.data['data']['days'][e]['expenses'].forEach((e)=>{
-                temp['data'].push(e['id'])
-            })
-            console.log("\n\n");
-            temp['head'] = {}
-            temp['head']['date'] = e
-            temp['head']['total'] = this.data['data']['days'][e]['total']
-            newData.push(temp)
-        })
+    async fetchUserDateSpan(){
+        let responseData = await ExpenseService.getDateSpanForUser();
+        console.log(responseData);
+        GlobalVars.oldestMonth = responseData['data']['oldest_month'];
+        GlobalVars.latestMonth = responseData['data']['latest_month'];
+        GlobalVars.oldestYear = responseData['data']['oldest_year'];
+        GlobalVars.latestYear = responseData['data']['latest_year'];
+    }
 
-        // newData.forEach((e)=>{
-        //     console.log(e);
+    async fetchCurrentMonthExpenses(){
+        let today = new Date();
+        this.data = await ExpenseService.fetchForMonthDayWise(today.getMonth()+1, today.getFullYear());
+        console.log('DAYA');
+        console.log(this.data);
+        this.data = GlobalVars.reformatDayWiseData(this.data);
+
+        // let newData = []
+        // Object.keys(this.data['data']['days']).forEach((e)=>{
+        //     // console.log(e);
+        //     let temp = {}
+        //     temp['extra'] = this.data['data']['days'][e]['expenses'];
+        //     temp['data'] = []
+        //     this.data['data']['days'][e]['expenses'].forEach((e)=>{
+        //         temp['data'].push(e['id'])
+        //     })
+        //     console.log("\n\n");
+        //     temp['head'] = {}
+        //     temp['head']['date'] = e
+        //     temp['head']['total'] = this.data['data']['days'][e]['total']
+        //     newData.push(temp)
         // })
-        this.data['data']['days'] = newData
+        //
+        // // newData.forEach((e)=>{
+        // //     console.log(e);
+        // // })
+        // this.data['data']['days'] = newData
 
     }
 

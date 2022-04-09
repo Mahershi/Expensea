@@ -12,6 +12,24 @@ export default class ExpenseModel{
     year;
     date;
 
+    returnCopy(){
+        let copy = new ExpenseModel();
+        copy.id = this.id;
+        copy.userId = this.userId;
+        copy.expenseDate = this.expenseDate;
+        copy.name = this.name;
+        copy.clusterId = this.clusterId;
+        copy.categoryId = this.categoryId;
+        copy.amount = this.amount;
+
+        copy.date = this.date;
+        copy.month = this.month;
+        copy.year = this.year;
+
+        return copy;
+
+    }
+
     static fromJson(json){
         let e = new ExpenseModel();
         e.amount = json['amount'] ? json['amount'] : '0';
@@ -53,6 +71,20 @@ export default class ExpenseModel{
         e.categoryId = 1;
         e.clusterId = null;
         e.expenseDate = new Date();
+
+        return e;
+    }
+
+    static newForMonthYear({monthIndex, year}){
+        let e = new ExpenseModel();
+        e.id = null;
+        e.name = '';
+        e.amount = '';
+        // e.userId = GlobalVars.currentUser.id;
+        e.userId = 1;
+        e.categoryId = 1;
+        e.clusterId = null;
+        e.expenseDate = new Date(year, monthIndex, 1);
 
         return e;
     }

@@ -6,7 +6,9 @@ import LoginScreen from "./src/components/screens/LoginScreen";
 import DashboardScreen from "./src/components/screens/DashboardScreen";
 import MonthlyExpensesScreen from "./src/components/screens/MonthlyExpensesScreen";
 import AddEditExpenseScreen from "./src/components/screens/AddEditExpenseScreen";
+import {LogBox} from "react-native";
 
+LogBox.ignoreAllLogs(true);
 const Stack = createNativeStackNavigator();
 
 export default class App extends Component{
@@ -17,7 +19,7 @@ export default class App extends Component{
               screenOptions={{
                   headerShown: false,
               }}
-              initialRouteName='DashboardScreen'
+              initialRouteName='MonthExpenseScreen'
             >
               <Stack.Screen
                   name="DashboardScreen"

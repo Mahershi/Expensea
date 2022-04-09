@@ -7,6 +7,7 @@ export class API{
     //EXPENSES
     static expenses = 'expenses/';
     static month_daywise = 'expenses/month_daywise/';
+    static date_span = 'expenses/date_span';
 
     //CATEGORIES
     static categories = 'categories/';

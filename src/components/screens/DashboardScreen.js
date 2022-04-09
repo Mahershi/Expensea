@@ -21,6 +21,17 @@ class DashboardScreen extends Component{
         // console.log(reducer);
     }
 
+    componentDidUpdate(prevProps: Readonly<P>, prevState: Readonly<S>, snapshot: SS) {
+        console.log("In COMP Update");
+        console.log()
+        if(this.props.route.params?.update == true){
+            console.log("Did Update");
+            this.controller.refreshBind();
+            this.props.route.params.update = false;
+        }
+
+    }
+
     render() {
         const {reducer} = this.props;
         // console.log("RE Dashboard Reducer")
@@ -46,7 +57,11 @@ class DashboardScreen extends Component{
               <View
                   style={dashboardPage.topContainer}
               >
-                  <DashboardList data={reducer['data']['days']}/>
+                  <DashboardList
+                      data={reducer['data']['days']}
+                      refreshCallback={this.controller.refreshBind}
+                      navigation={this.props.navigation}
+                  />
               </View>
           </View>
         );

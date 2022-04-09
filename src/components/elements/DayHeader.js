@@ -10,7 +10,7 @@ export default class DayHeader extends Component{
             >
                 <Text
                     style={expenseStyles2.headDayStyle}
-                >02</Text>
+                >{this.props.date}</Text>
             </View>
         );
     }

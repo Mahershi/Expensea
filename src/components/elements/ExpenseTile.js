@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {View, Text} from 'react-native';
+import {View, Text, TouchableNativeFeedback} from 'react-native';
 import {expenseStyles} from "../../styles/styles";
 import CustomSpacer from "./CustomSpacer";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
@@ -22,17 +22,38 @@ export default class ExpenseTile extends Component{
                     flexDirection: "row",
                     margin: 20,
                     alignItems: 'center',
-                    backgroundColor: Color.textColor
+                    backgroundColor: Color.textColor,
+                    overflow: 'hidden'
+
                 }}
             >
-                <View
-                    style={expenseStyles.editIconBgStyle}
-                >
-                    <Icon
-                        style={expenseStyles.editIconStyle}
-                        name='pencil'
-                        size={20}
-                    />
+                <View style={{
+                    borderRadius: 18,
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                }}>
+                    <TouchableNativeFeedback
+                        onPress={()=>{
+                            console.log("pressed");
+                            this.props.navigation.navigate('AddEditExpenseScreen', {
+                                expense: this.expense,
+                                backToDashboard: false,
+                                backToMonthly: true,
+                                // not really using refreshCallback anymore due to binding issues
+                                // dashboardRefreshCallback: this.props.refreshCallback
+                            });
+                        }}
+                    >
+                        <View
+                            style={expenseStyles.editIconBgStyle}
+                        >
+                            <Icon
+                                style={expenseStyles.editIconStyle}
+                                name='pencil'
+                                size={20}
+                            />
+                        </View>
+                    </TouchableNativeFeedback>
                 </View>
                 <CustomSpacer width={12}/>
                 <View

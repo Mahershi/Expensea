@@ -25,21 +25,30 @@ export default class DashboardList extends Component{
 
     ]
     render() {
-        console.log("length:" + this.props.data.length)
+        // console.log("length:" + this.props.data.length)
         return (
             <SwipeListView
                 style={expenseStyles.dashboardListStyle}
                 useSectionList
-                keyExtractor={(item, index) =>{
-                    console.log(item);
-                    console.log("key: " + item+index);
-                    return item+index;
-                }}
+                // keyExtractor={(item, index) =>{
+                //     // console.log(item);
+                //     console.log("key: " + item+index);
+                //     return item+index;
+                // }}
+
                 sections={
                     this.props.data
                 }
                 renderItem={(item)=>{
-                    return <ExpenseTile id={item.item} data={item.section.extra[item.index]}/>
+                    console.log("ITEM");
+                    console.log(item.index);
+                    console.log(item);
+                    return <ExpenseTile
+                        id={item.item}
+                        data={item.section.extra[item.index]}
+                        refreshCallback={this.props.refreshCallback}
+                        navigation={this.props.navigation}
+                    />
                 }}
                 renderSectionHeader={({section})=>(
                     <ListHeader date={section.head.date} total={section.head.total}/>

@@ -169,6 +169,7 @@ export const monthYearControlStyles = StyleSheet.create({
 
     totalContainerStyle: {
         flexDirection: 'column',
+        width: Dimensions.get('window').width * 0.3
     },
 
     totalTitleTextStyle: {
@@ -189,6 +190,28 @@ export const monthYearControlStyles = StyleSheet.create({
 
 
 export const monthExpensePage = StyleSheet.create({
+    fab: {
+        // width: 70,
+        // height: 70,
+        borderRadius: 40,
+        backgroundColor: Color.textColor,
+        marginTop: -100,
+        alignSelf: 'center',
+        alignItems: 'center',
+        overflow: 'hidden'
+
+    },
+
+    fabInner: {
+        width: 60,
+        height: 60,
+        borderRadius: 40,
+        backgroundColor: Color.textColor,
+        alignSelf: 'center',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+
     topContainer: {
         marginTop: -20,
         borderTopRightRadius: 20,

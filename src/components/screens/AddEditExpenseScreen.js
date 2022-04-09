@@ -19,9 +19,18 @@ export default class AddEditExpenseScreen extends Component{
         this.datePickerOpen = false;
         this.navigation = this.props.navigation;
         this.expense = this.props.route.params['expense'];
+        console.log(this.expense instanceof ExpenseModel);
+        this.newExp = this.expense.returnCopy();
+        console.log(this.newExp instanceof ExpenseModel)
+        console.log(this.newExp);
         this.currentDate = new Date(this.expense.expenseDate);
-        console.log(this.props.route.params);
-        this.controller = new EditExpenseController({navigation: this.navigation, goBackCallback: this.props.route.params['dashboardRefreshCallback']});
+        this.backToDashboard = this.props.route.params['backToDashboard'];
+        this.backToMonthly = this.props.route.params['backToMonthly'];
+        this.controller = new EditExpenseController({
+            navigation: this.navigation,
+            backToMonthly: this.backToMonthly,
+            backToDashboard: this.backToDashboard
+        });
     }
 
     componentDidMount() {
@@ -63,7 +72,7 @@ export default class AddEditExpenseScreen extends Component{
                         <TouchableNativeFeedback
                             onPress={()=>{
                                 console.log("tapped")
-                                this.controller.saveExpenseBind({expense: this.expense});
+                                this.controller.saveExpenseBind({expense: this.newExp});
                             }}
                         >
                             <View style={{padding: 4}}>
@@ -87,7 +96,7 @@ export default class AddEditExpenseScreen extends Component{
                                 onConfirm={(date)=>{
                                     this.datePickerOpen = false;
                                     this.currentDate = date;
-                                    this.expense.expenseDate = this.currentDate.toISOString()
+                                    this.newExp.expenseDate = this.currentDate.toISOString()
                                     console.log(this.currentDate)
                                     this.setState({})
                                 }}
@@ -122,15 +131,14 @@ export default class AddEditExpenseScreen extends Component{
                             onChangeText={(value) => {
                                 let regexp = /^\d+\.?\d{0,2}$/;
                                 if(regexp.test(value)){
-                                    this.expense.amount = value;
+                                    this.newExp.amount = value;
                                     this.setState({});
-                                    console.log(this.expense.amount);
                                 }
                             }}
                             style={editExpenseStyle.amountInput}
                             placeholder='Amount'
                             keyboardType='decimal-pad'
-                            value={this.expense.amount.toString()}
+                            value={this.newExp.amount.toString()}
                             textAlign='center'
                             placeholderTextColor={Color.textColor30}
 
@@ -141,13 +149,12 @@ export default class AddEditExpenseScreen extends Component{
                 <View style={editExpenseStyle.bottomContainer}>
                     <TextInput
                         onChangeText={(value)=>{
-                            this.expense.name = value;
+                            this.newExp.name = value;
                             this.setState({});
-                            console.log(this.expense.name);
                         }}
                         style={editExpenseStyle.nameInput}
                         onSubmitEditing={(value)=>{}}
-                        value={this.expense.name.toString()}
+                        value={this.newExp.name.toString()}
                         placeholder='Expense Name'
                         textAlign='center'
                         placeholderTextColor={Color.primaryColor30}
@@ -180,8 +187,7 @@ export default class AddEditExpenseScreen extends Component{
                             inactiveSlideScale={1}
                             onSnapToItem={(index)=>{
                                 console.log("To: " + index)
-                                this.expense.categoryId = GlobalVars.categories[index].id
-                                console.log("New C: " + this.expense.categoryId);
+                                this.newExp.categoryId = GlobalVars.categories[index].id
                             }}
 
 
