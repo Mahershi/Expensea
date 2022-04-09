@@ -40,9 +40,9 @@ export default class DashboardList extends Component{
                     this.props.data
                 }
                 renderItem={(item)=>{
-                    console.log("ITEM");
-                    console.log(item.index);
-                    console.log(item);
+                    // console.log("ITEM");
+                    // console.log(item.index);
+                    // console.log(item);
                     return <ExpenseTile
                         id={item.item}
                         data={item.section.extra[item.index]}

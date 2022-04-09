@@ -15,12 +15,17 @@ export default class MonthlyExpenseController{
         this.currentMonth = month;
         this.currentYear = year;
         this.monthsIndex = [];
-        this.years = []
+        this.years = [];
         this.setUpMonthYear();
         this.getForMonthYearBind = this.getExpensesForMonthYear.bind(this);
         this.refreshBind = this.refreshOnNavigationBack.bind(this);
         this.init();
         this.newForMonthBind = this.gotoAddEditScreenForCurrent.bind(this);
+        this.goBackBind = this.goBack.bind(this);
+    }
+
+    goBack(){
+        this.navigation.navigate('DashboardScreen', {update: true});
     }
 
     async gotoAddEditScreenForCurrent(){
@@ -62,15 +67,15 @@ export default class MonthlyExpenseController{
 
     setUpMonthYear(){
         this.monthsIndex = [];
-        this.years = [];
+        this.years = []
         for(let i = GlobalVars.oldestYear; i<=GlobalVars.latestYear; i++){
-            this.years.push(i);
+            this.years.push(i)
         }
         for(let i = GlobalVars.oldestMonth; i<=GlobalVars.latestMonth; i++){
             this.monthsIndex.push(i);
         }
-        console.log("months");
-        console.log(this.monthsIndex);
+        console.log("YEARS hERE");
+        console.log(JSON.stringify(this.years));
     }
 
     async initAllCategories(){

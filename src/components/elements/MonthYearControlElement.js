@@ -43,6 +43,8 @@ export default class MonthYearControlElement extends Component{
 
 
     render() {
+        console.log("CUR YEAR: " + this.curYear)
+        console.log(this.years);
         return (
             <View
                 style={monthYearControlStyles.container}

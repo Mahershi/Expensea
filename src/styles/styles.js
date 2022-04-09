@@ -244,6 +244,7 @@ export const dashboardPage = StyleSheet.create({
         borderTopLeftRadius: 20,
         backgroundColor: Color.textColor,
         height: Dimensions.get('window').height * 0.84 - 20,
+        flexDirection: 'column'
     },
 
     bottomContainer: {

@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {dashboardPage} from "../../styles/styles";
-import {TouchableNativeFeedback, View} from 'react-native';
+import {Text, TouchableNativeFeedback, View} from 'react-native';
 import MonthExpenseBrief from "../elements/MonthExpenseBrief";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import DashboardList from "../elements/DashboardList";
@@ -10,6 +10,7 @@ import {connect} from "react-redux";
 import {dashboardLoaded, loadDashboard} from "../../actions/dashboardActions";
 import DashboardController from "../../controllers/dashboard_controller";
 import CustomLoader from "../elements/CustomLoader";
+import PreviousMonths from "../elements/PreviousMonths";
 
 
 class DashboardScreen extends Component{
@@ -17,8 +18,8 @@ class DashboardScreen extends Component{
         super(props);
         const {reducer, actions, navigation} = this.props;
         this.controller = new DashboardController({actions: actions, navigation: navigation, reducer: reducer});
-        // console.log("Dashboard Reducer")
-        // console.log(reducer);
+        console.log("Dashboard Reducer")
+        console.log(reducer);
     }
 
     componentDidUpdate(prevProps: Readonly<P>, prevState: Readonly<S>, snapshot: SS) {
@@ -54,6 +55,7 @@ class DashboardScreen extends Component{
                         this.props.navigation.navigate('MenuScreen');
                     }}
                   >
+
                       <Icon
                           name='account'
                           size={54}
@@ -64,6 +66,8 @@ class DashboardScreen extends Component{
               <View
                   style={dashboardPage.topContainer}
               >
+
+                  <PreviousMonths months={this.controller.lastMonths} callback={this.controller.gotoMonthBind}/>
                   <DashboardList
                       data={reducer['data']['days']}
                       refreshCallback={this.controller.refreshBind}

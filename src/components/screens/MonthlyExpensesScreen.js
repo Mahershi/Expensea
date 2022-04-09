@@ -37,13 +37,14 @@ class MonthlyExpensesScreen extends Component{
 
     constructor(props) {
         super(props);
-        const {month, year, navigation, reducer, actions} = this.props;
+        const {reducer, actions} = this.props;
+        const {month, year, navigation} = this.props.route.params;
         this.controller = new MonthlyExpenseController({
             navigation: navigation,
-            // month: month,
-            // year: year
-            month: 4,
-            year: 2022,
+            month: month,
+            year: year,
+            // month: 4,
+            // year: 2022,
             reducer: reducer,
             actions: actions
         })
@@ -74,12 +75,16 @@ class MonthlyExpensesScreen extends Component{
                 <View
                     style={monthExpensePage.bottomContainer}
                 >
-                    <BackButtonComponent invert={false}/>
+                    <BackButtonComponent
+                        invert={false}
+                        enable={true}
+                        callback={this.controller.goBackBind}
+                    />
                     <View
                         style={{
                             flex: 1
                         }}
-                    ></View>
+                    />
                     <Text
                         style={monthExpensePage.titleStyle}
                     >Expenses</Text>
@@ -87,7 +92,7 @@ class MonthlyExpensesScreen extends Component{
                         style={{
                             flex: 1
                         }}
-                    ></View>
+                    />
                     <View
                         pointerEvents='none'
                         style={{

@@ -12,10 +12,19 @@ export default class DashboardController {
         this.actions = actions;
         this.navigation = navigation;
         this.reducer = reducer;
-
-        let i = this.loadInitial();
+        this.lastMonths = [];
+        this.loadInitial();
         this.gotoAddEditScreenBind = this.gotoAddEditScreen.bind(this);
         this.refreshBind = this.refreshDashboardOnNavigatingBack.bind(this);
+        this.gotoMonthBind = this.gotoMonthExpenses.bind(this);
+    }
+
+    gotoMonthExpenses({month, year}){
+        console.log("GOto: " + month + " " + year)
+        this.navigation.navigate('MonthExpenseScreen', {month: month, year: year, navigation: this.navigation});
+        console.log("OLD");
+
+        console.log(JSON.stringify(this.data));
     }
 
     gotoAddEditScreen(){
@@ -29,7 +38,27 @@ export default class DashboardController {
         });
     }
 
+    lastThreeMonths(){
+        let today = new Date();
+        this.lastMonths = [];
+        let curMonth = today.getMonth()+1;
+        let curYear = today.getFullYear();
+        for(let i=0; i<3; i++){
+            if(curMonth - i < 1){
+                curMonth = 12 + i;
+                curYear--;
+            }
+            this.lastMonths.push({
+                month: curMonth - i,
+                year: curYear
+            });
+
+        }
+        console.log("MOnths: " + JSON.stringify(this.lastMonths));
+    }
+
     async loadInitial(){
+        this.lastThreeMonths();
         this.actions.loadDashboard();
         this.initAllCategories();
         this.fetchUserClusters();
@@ -66,8 +95,8 @@ export default class DashboardController {
     }
 
     async fetchUserDateSpan(){
+        console.log('fetching date span');
         let responseData = await ExpenseService.getDateSpanForUser();
-        console.log(responseData);
         GlobalVars.oldestMonth = responseData['data']['oldest_month'];
         GlobalVars.latestMonth = responseData['data']['latest_month'];
         GlobalVars.oldestYear = responseData['data']['oldest_year'];

@@ -9,7 +9,7 @@ export default class BackButtonComponent extends Component{
             <TouchableWithoutFeedback
                 onPress={()=>{
                     if(this.props.enable){
-                        this.props.navigation.goBack();
+                        this.props.callback();
                     }
                 }}
             >
