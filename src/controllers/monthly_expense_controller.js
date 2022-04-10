@@ -22,10 +22,17 @@ export default class MonthlyExpenseController{
         this.init();
         this.newForMonthBind = this.gotoAddEditScreenForCurrent.bind(this);
         this.goBackBind = this.goBack.bind(this);
+        this.deleteExpenseBind = this.deleteExpense.bind(this);
     }
 
     goBack(){
         this.navigation.navigate('DashboardScreen', {update: true});
+    }
+
+    async deleteExpense({expense}){
+        console.log("delete: " + expense.id);
+        await ExpenseService.deleteExpense({id: expense.id});
+        this.refreshOnNavigationBack();
     }
 
     async gotoAddEditScreenForCurrent(){
@@ -56,7 +63,7 @@ export default class MonthlyExpenseController{
         this.data = [];
         // console.log("Clear");
         // console.log(JSON.stringify(this.data));
-        this.data = await ExpenseService.fetchForMonthDayWise(month, year);
+        this.data = await ExpenseService.fetchForMonthDayWise({month: month, year: year});
         // console.log("DATA fromAPI ");
         // console.log(JSON.stringify(this.data));
         this.data = GlobalVars.reformatDayWiseData(this.data);

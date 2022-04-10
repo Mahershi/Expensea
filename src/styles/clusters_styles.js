@@ -50,7 +50,7 @@ export const clusterDetail = StyleSheet.create({
         borderTopRightRadius: 20,
         borderTopLeftRadius: 20,
         backgroundColor: Color.textColor,
-        height: Dimensions.get('window').height * 0.84,
+        height: Dimensions.get('window').height * 0.84-20,
         flexDirection: 'column',
     },
 
@@ -63,14 +63,14 @@ export const clusterDetail = StyleSheet.create({
         height: Dimensions.get('window').height * 0.16,
     },
 
-    totalHead: {
-        fontSize: 16,
+    nameHead: {
+        fontSize: 22,
         color: Color.textColor70,
         letterSpacing: 1.01
     },
 
     total: {
-        fontSize: 28,
+        fontSize: 22,
         color: Color.textColor,
         letterSpacing: 1.01
     }
@@ -100,6 +100,7 @@ export const myClusters = StyleSheet.create({
     },
 
     head: {
+        marginTop: -20,
         flexDirection: 'column',
         alignItems: 'center'
     },

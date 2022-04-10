@@ -34,6 +34,17 @@ export default class GlobalVars {
         return data;
     }
 
+    static days = [
+        // 'Sunday',
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+        'Sunday'
+    ]
+
     static months = [
         '',
         'January',

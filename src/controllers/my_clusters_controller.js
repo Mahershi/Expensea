@@ -13,6 +13,7 @@ export default class MyClusterController{
         this.editClusterBind = this.gotoEditCluster.bind(this);
     }
 
+
     async deleteCluster({id}){
         await ClusterService.deleteCluster({id: id});
         this.reload();

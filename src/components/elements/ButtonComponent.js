@@ -7,7 +7,7 @@ export default class ButtonComponent extends Component{
         return (
             <TouchableNativeFeedback
                 onPress={()=>{
-
+                    this.props.callback();
                 }
                 }
             >

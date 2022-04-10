@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, PureComponent} from 'react';
 import {View, Text, TouchableNativeFeedback} from 'react-native';
 import Color from "../../constants/colors";
 import {expenseStyles, expenseStyles2} from "../../styles/styles";
@@ -8,7 +8,7 @@ import CategoryModel from "../../models/CategoryModel";
 import ClusterModel from "../../models/ClusterModel";
 import ExpenseModel from "../../models/ExpenseModel";
 
-export default class ExpenseTile2 extends Component{
+export default class ExpenseTile2 extends PureComponent{
     constructor(props) {
         super(props);
         const {data} = this.props;

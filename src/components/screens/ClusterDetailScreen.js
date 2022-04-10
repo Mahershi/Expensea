@@ -4,8 +4,14 @@ import {clusterDetail, myClusters} from "../../styles/clusters_styles";
 import BackButtonComponent from "../elements/BackButtonComponent";
 import CustomSpacer from "../elements/CustomSpacer";
 import DashboardList from "../elements/DashboardList";
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
+import {clusterLoaded, loadCluster} from "../../actions/clusterDetailActions";
+import ClusterDetailController from "../../controllers/cluster_detail_controller";
+import AddButtonComponent from "../elements/AddButtonComponent";
+import CustomLoader from "../elements/CustomLoader";
 
-export default class ClusterDetailScreen extends Component{
+class ClusterDetailScreen extends Component{
     arr = [
         {
             head: {
@@ -23,33 +29,60 @@ export default class ClusterDetailScreen extends Component{
         },
 
     ]
+
+    constructor(props) {
+        super(props);
+        console.log(JSON.stringify(props))
+        const {navigation, reducer, actions} = this.props;
+        console.log(this.props.route.params);
+        const {cluster} = this.props.route.params;
+        console.log(cluster);
+        this.controller = new ClusterDetailController({
+            navigation: navigation,
+            reducer: reducer,
+            actions: actions,
+            cluster: cluster,
+        })
+    }
     render() {
+        const {reducer} = this.props;
         return (
             <View style={clusterDetail.root}>
+                {reducer.loading ? <CustomLoader invert={false}/> : null}
                 <View style={clusterDetail.bottomContainer}>
                     <View style={{
                         marginTop: -20
                     }}>
-                        <BackButtonComponent invert={true} navigation={this.props.navigation} enable={true}/>
+                        <BackButtonComponent
+                            invert={true}
+                            enable={true}
+                            callback={()=>{
+                                this.props.navigation.goBack();
+                            }}
+                        />
                     </View>
                     <View style={{flex: 1}}></View>
                     <View style={myClusters.head}>
-                        <Text style={clusterDetail.totalHead}>Total</Text>
+                        <Text style={clusterDetail.nameHead}>{this.controller.cluster.name}</Text>
                         <CustomSpacer height={8} />
                         <View>
-                            <Text style={clusterDetail.total}>$ 1212</Text>
+                            <Text style={clusterDetail.total}>{'$ ' + reducer['data']['monthTotal']}</Text>
                         </View>
                     </View>
                     <View style={{flex: 1}}></View>
                     <View style={{
                         marginTop: -20
                     }}>
-                        <BackButtonComponent invert={true} navigation={this.props.navigation} enable={true}/>
+                        <AddButtonComponent
+                            invert={true}
+                            callBack={this.controller.addExpenseBind}
+                        />
                     </View>
                 </View>
                 <View style={clusterDetail.topContainer}>
                     <DashboardList
-                        data={this.arr}
+                        deleteCallback={this.controller.deleteExpenseBind}
+                        data={reducer['data']['days']}
                         // refreshCallback={this.controller.refreshBind}
                         navigation={this.props.navigation}
                     />
@@ -58,3 +91,17 @@ export default class ClusterDetailScreen extends Component{
         );
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        reducer: state.clusterDetailReducer
+    };
+}
+
+const ActionCreators = Object.assign({}, {loadCluster, clusterLoaded});
+
+const mapDispatchToProps = dispatch => ({
+    actions: bindActionCreators(ActionCreators, dispatch),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ClusterDetailScreen)

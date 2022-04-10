@@ -19,17 +19,18 @@ export default class AddEditExpenseScreen extends Component{
         this.datePickerOpen = false;
         this.navigation = this.props.navigation;
         this.expense = this.props.route.params['expense'];
-        console.log(this.expense instanceof ExpenseModel);
         this.newExp = this.expense.returnCopy();
-        console.log(this.newExp instanceof ExpenseModel)
-        console.log(this.newExp);
         this.currentDate = new Date(this.expense.expenseDate);
         this.backToDashboard = this.props.route.params['backToDashboard'];
         this.backToMonthly = this.props.route.params['backToMonthly'];
+        this.backToCluster = this.props.route.params['backToCluster'];
+        this.clusterReloadBind = this.props.route.params['clusterReloadBind'];
         this.controller = new EditExpenseController({
             navigation: this.navigation,
             backToMonthly: this.backToMonthly,
-            backToDashboard: this.backToDashboard
+            backToDashboard: this.backToDashboard,
+            backToCluster: this.backToCluster,
+            clusterReloadBind: this.clusterReloadBind
         });
     }
 

@@ -5,6 +5,13 @@ import ExpenseModel from "../models/ExpenseModel";
 
 // TODO: UnComment Global Var
 export default class ExpenseService {
+    static async deleteExpense({id}){
+        return await RestService.request({
+            endpoint: API.expenses + id + '/',
+            method: 'delete'
+        })
+    }
+
     static async createNew({expense}){
         console.log("TOJSON");
         console.log(expense.toJson());
@@ -41,7 +48,7 @@ export default class ExpenseService {
         )
     }
 
-    static async fetchForMonthDayWise(month, year){
+    static async fetchForMonthDayWise({month = null, year=null, cluster=null}){
         const today = new Date();
         // console.log("Cur month");
         // console.log(today.getMonth() + 1);
@@ -52,6 +59,7 @@ export default class ExpenseService {
                 queryParams: {
                     'month': month,
                     'year': year,
+                    'cluster': cluster,
                     // 'user_id': GlobalVars.currentUser.id,
                     'user_id': 1,
                 }

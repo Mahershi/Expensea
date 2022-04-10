@@ -17,6 +17,13 @@ export default class DashboardController {
         this.gotoAddEditScreenBind = this.gotoAddEditScreen.bind(this);
         this.refreshBind = this.refreshDashboardOnNavigatingBack.bind(this);
         this.gotoMonthBind = this.gotoMonthExpenses.bind(this);
+        this.deleteExpenseBind = this.deleteExpense.bind(this);
+    }
+
+    async deleteExpense({expense}){
+        console.log("delete: " + expense.id);
+        await ExpenseService.deleteExpense({id: expense.id});
+        this.refreshBind();
     }
 
     gotoMonthExpenses({month, year}){
@@ -105,7 +112,7 @@ export default class DashboardController {
 
     async fetchCurrentMonthExpenses(){
         let today = new Date();
-        this.data = await ExpenseService.fetchForMonthDayWise(today.getMonth()+1, today.getFullYear());
+        this.data = await ExpenseService.fetchForMonthDayWise({month: today.getMonth() + 1, year: today.getFullYear()});
         console.log('DAYA');
         console.log(this.data);
         this.data = GlobalVars.reformatDayWiseData(this.data);

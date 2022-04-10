@@ -1,8 +1,15 @@
-import React, {Component} from "react";
+import React, {Component, PureComponent} from "react";
 import {View, Text} from 'react-native';
 import {expenseStyles2} from "../../styles/styles";
+import GlobalVars from "../../helpers/GlobalVars";
 
-export default class DayHeader extends Component{
+export default class DayHeader extends PureComponent{
+    constructor(props) {
+        super(props);
+        const {date} = this.props;
+        this.d = new Date(date);
+    }
+
     render() {
         return (
             <View
@@ -10,7 +17,10 @@ export default class DayHeader extends Component{
             >
                 <Text
                     style={expenseStyles2.headDayStyle}
-                >{this.props.date}</Text>
+                >{this.props.date.substring(8)}</Text>
+                <Text
+                    style={expenseStyles2.weekDayStyle}
+                >{GlobalVars.days[this.d.getDay()]}</Text>
             </View>
         );
     }

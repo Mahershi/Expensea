@@ -30,12 +30,6 @@ export default class DashboardList extends Component{
             <SwipeListView
                 style={expenseStyles.dashboardListStyle}
                 useSectionList
-                // keyExtractor={(item, index) =>{
-                //     // console.log(item);
-                //     console.log("key: " + item+index);
-                //     return item+index;
-                // }}
-
                 sections={
                     this.props.data
                 }
@@ -52,19 +46,26 @@ export default class DashboardList extends Component{
                 }}
                 renderSectionHeader={({section})=>(
                     <ListHeader date={section.head.date} total={section.head.total}/>
-
                 )}
                 renderHiddenItem={(data, rowmap)=>{
+                    // console.log("HIDDEN: " + JSON.stringify())
                     return <View
                         style={{
                             flexDirection: "row",
                             justifyContent: 'space-between',
-                            margin: 20,
+                            marginHorizontal: 20,
+                            marginVertical: 20,
                             flex: 1
                         }}
                     >
-                        <ButtonComponent text={data.item}/>
-                        <ButtonComponent text='Delete'/>
+                        <ButtonComponent text='Modify Cluster'/>
+                        <ButtonComponent
+                            text='Delete'
+                            callback={()=>{
+                                this.props.deleteCallback({expense: data.section.extra[data.index]});
+                            }
+                            }
+                        />
                     </View>
                 }}
                 leftOpenValue={75}

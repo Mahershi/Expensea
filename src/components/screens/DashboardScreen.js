@@ -69,6 +69,7 @@ class DashboardScreen extends Component{
 
                   <PreviousMonths months={this.controller.lastMonths} callback={this.controller.gotoMonthBind}/>
                   <DashboardList
+                      deleteCallback={this.controller.deleteExpenseBind}
                       data={reducer['data']['days']}
                       refreshCallback={this.controller.refreshBind}
                       navigation={this.props.navigation}

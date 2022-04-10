@@ -9,8 +9,7 @@ const INITIAL_STATE = {
     }
 }
 
-const dashboardReducer = (state = INITIAL_STATE, action) => {
-    console.log("DS Reducer called");
+const clusterDetailReducer = (state = INITIAL_STATE, action) => {
     switch(action.type){
         case LOADING:
             return {
@@ -35,4 +34,4 @@ const dashboardReducer = (state = INITIAL_STATE, action) => {
     }
 }
 
-export default dashboardReducer;
+export default clusterDetailReducer;

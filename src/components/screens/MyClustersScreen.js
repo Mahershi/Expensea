@@ -30,6 +30,7 @@ class MyClustersScreen extends Component{
     ]
     constructor(props) {
         super(props);
+
         const {reducer, actions, navigation} = this.props;
         this.controller = new MyClusterController({
             navigation: navigation,
@@ -86,18 +87,9 @@ class MyClustersScreen extends Component{
 
                         data={GlobalVars.clusters}
                         renderItem={(item)=>{
-                            return <TouchableNativeFeedback
-                                onPress={()=>{
-                                    // goto cluster detail screen, use bind function and pass only id
-                                }
-                                }
-                            >
-                                <ClusterTile name={item.item.name} count={item.item.expenses}/>
-                            </TouchableNativeFeedback>
+                            return <ClusterTile cluster={item.item} navigation={this.controller.navigation}/>
                         }}
                         renderHiddenItem={(data, rowmap)=>{
-                            console.log("DATA");
-                            console.log(JSON.stringify(data))
                             return <View
                                 style={{
                                     flexDirection: "row",

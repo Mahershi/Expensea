@@ -6,14 +6,17 @@ export const buttonStyle = StyleSheet.create({
     primaryBg: {
         backgroundColor: Color.primaryColor,
         borderRadius: 20,
-        paddingHorizontal: 10,
+        paddingHorizontal: 12,
+        paddingVertical: 2,
         alignItems: 'center',
         justifyContent: 'center',
+        maxWidth: 80
     },
 
     primaryText: {
         color: Color.textColor,
-        fontSize: 12
+        fontSize: 11,
+        textAlign: 'center'
     }
 })
 
@@ -52,6 +55,11 @@ export const expenseStyles2 = StyleSheet.create({
     headDayStyle: {
         color: Color.primaryColor,
         fontSize: 20
+    },
+
+    weekDayStyle:{
+        fontSize: 12,
+        color: Color.primaryColor,
     },
 
     expenseNameStyle: {

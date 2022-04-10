@@ -131,7 +131,7 @@ class MonthlyExpensesScreen extends Component{
                             />
                         }}
                         renderSectionHeader={({section})=>(
-                            <DayHeader date={section.head.date.substring(8)}/>
+                            <DayHeader date={section.head.date}/>
                         )}
                         renderHiddenItem={(data, rowmap)=>{
                             return <View
@@ -139,23 +139,20 @@ class MonthlyExpensesScreen extends Component{
                                     flexDirection: "row",
                                     flex: 1,
                                     margin: 20,
+                                    justifyContent: 'space-between',
                                 }}
                             >
-                                <ButtonComponent text='Change'/>
-                                <View
-                                    style={{
-                                        flexDirection: "row",
-                                        justifyContent: 'space-between',
-                                        // margin: 20,
-                                        flex: 1
-                                    }}
-                                >
-                                    <ButtonComponent text='Remove'/>
-                                    <ButtonComponent text='Delete'/>
-                                </View>
+                                <ButtonComponent text='Modify Cluster'/>
+                                <ButtonComponent
+                                    text='Delete'
+                                    callback={()=>{
+                                        this.controller.deleteExpenseBind({expense: data.section.extra[data.index]})
+                                    }
+                                    }
+                                />
                             </View>
                         }}
-                        leftOpenValue={150}
+                        leftOpenValue={75}
                         swipeToOpenPercent={10}
                         swipeToClosePercent={15}
                         rightOpenValue={-75}
