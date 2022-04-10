@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, TouchableNativeFeedback} from 'react-native';
 import {menuStyles} from "../../styles/menustyles";
 import BackButtonComponent from "../elements/BackButtonComponent";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -7,12 +7,29 @@ import Color from "../../constants/colors";
 import CustomSpacer from "../elements/CustomSpacer";
 import MenuButton from "../elements/MenuButton";
 import LogoutButton from "../elements/LogoutButton";
+import MenuController from "../../controllers/menu_controller";
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
+import {doLogout, logoutDone} from "../../actions/menuActions";
+import CustomLoader from "../elements/CustomLoader";
 
 
-export default class MenuScreen extends Component{
+class MenuScreen extends Component{
+    constructor(props) {
+        super(props);
+        const {actions, reducer, navigation} = this.props;
+        this.controller = new MenuController({
+            actions: actions,
+            reducer: reducer,
+            navigation: navigation
+        });
+    }
+
     render() {
+        const {reducer} = this.props;
         return (
             <View style={menuStyles.rootContainer}>
+                {reducer.loading ? <CustomLoader invert={true}/> : null}
                 <View style={menuStyles.bottomContainer}>
                     <View style={{
                         alignSelf: 'flex-start'
@@ -57,10 +74,26 @@ export default class MenuScreen extends Component{
                             this.props.navigation.push('MyClustersScreen')
                         }}
                     />
-                    <LogoutButton />
+                    <LogoutButton callback={()=>{
+                        this.controller.logoutBind();
+                    }}/>
                 </View>
 
             </View>
         );
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        reducer: state.menuReducer
+    };
+}
+
+const ActionCreators = Object.assign({}, {doLogout, logoutDone});
+
+const mapDispatchToProps = dispatch => ({
+    actions: bindActionCreators(ActionCreators, dispatch),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MenuScreen)

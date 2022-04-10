@@ -4,6 +4,7 @@ import dashboardReducer from "./reducers/dashboard_reducer";
 import monthExpenseReducer from "./reducers/month_expense_reducer";
 import myClustersReducer from "./reducers/my_cluster_reducer";
 import clusterDetailReducer from "./reducers/cluster_detail_reducer";
+import menuReducer from "./reducers/menu_reducer";
 
 const rootReducer = combineReducers({
     'loginReducer': loginReducer,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
     'monthlyExpenseReducer': monthExpenseReducer,
     'myClusterReducer': myClustersReducer,
     'clusterDetailReducer': clusterDetailReducer,
+    'menuReducer': menuReducer,
 });
 const configureStore = () => {
     return createStore(rootReducer);

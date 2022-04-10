@@ -66,8 +66,8 @@ export default class ExpenseModel{
         e.id = null;
         e.name = '';
         e.amount = '';
-        // e.userId = GlobalVars.currentUser.id;
-        e.userId = 1;
+        e.userId = GlobalVars.currentUser.id;
+        // e.userId = 1;
         e.categoryId = 1;
         e.clusterId = null;
         e.expenseDate = new Date();

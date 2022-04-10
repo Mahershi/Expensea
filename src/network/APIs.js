@@ -3,6 +3,7 @@ export class API{
 
     // USERS
     static checkExists = 'users/exists/';
+    static users = 'users/';
 
     //EXPENSES
     static expenses = 'expenses/';

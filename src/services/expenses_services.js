@@ -60,8 +60,8 @@ export default class ExpenseService {
                     'month': month,
                     'year': year,
                     'cluster': cluster,
-                    // 'user_id': GlobalVars.currentUser.id,
-                    'user_id': 1,
+                    'user_id': GlobalVars.currentUser.id,
+                    // 'user_id': 1,
                 }
             }
         )
@@ -72,8 +72,8 @@ export default class ExpenseService {
         return await RestService.request({
             endpoint: API.date_span,
             queryParams: {
-                // user_id: GlobalVars.currentUser.id,
-                user_id: 1
+                user_id: GlobalVars.currentUser.id,
+                // user_id: 1
             }
         })
     }

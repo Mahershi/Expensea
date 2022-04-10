@@ -12,21 +12,30 @@ export default class MyGoogleSignIn{
     }
 
     static async signInUsingGoogle(){
-        var user;
-        GoogleSignin.hasPlayServices().then((hasPlayServices)=>{
+        let user;
+        return GoogleSignin.hasPlayServices().then((hasPlayServices)=>{
             if(hasPlayServices){
-                GoogleSignin.signIn().then((userInfo)=>{
+                return GoogleSignin.signIn().then((userInfo)=>{
+                    console.log("userinto");
                     console.log(JSON.stringify(userInfo))
                     user = userInfo;
+                    return user;
                 }).catch((err)=>{
                     console.log("Err: " + err);
                     user = null;
+                    return user;
                 })
             }
         }).catch((err)=>{
             console.log("ERR 1: " + err);
             user = null;
+            return user;
         })
-        return user;
+
+    }
+
+    static async singOut(){
+        await GoogleSignin.revokeAccess();
+        await GoogleSignin.signOut();
     }
 }

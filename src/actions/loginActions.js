@@ -1,13 +1,13 @@
-import {LOADED, LOADING} from "../constants/actionConstants";
+import {LOADED, LOADED_LOGIN, LOADING, LOADING_LOGIN} from "../constants/actionConstants";
 
 export function doLogin() {
     return{
-        type: LOADING,
+        type: LOADING_LOGIN,
     };
 }
 
 export function loginDone() {
     return {
-        type: LOADED
+        type: LOADED_LOGIN
     };
 }

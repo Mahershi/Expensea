@@ -14,4 +14,17 @@ export default class LoginService{
         )
         return responseData;
     }
+
+    static async createNew({email, password, name, uname}){
+        return await RestService.request({
+            endpoint: API.users,
+            method: 'post',
+            data: {
+                'email': email,
+                'uname': uname,
+                'password': password,
+                'name': name
+            }
+        })
+    }
 }

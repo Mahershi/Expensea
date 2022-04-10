@@ -14,20 +14,44 @@ export default class LoginController{
     }
 
     async doGoogleLoginIn(){
-        MyGoogleSignIn.signInUsingGoogle().then(async (g)=>{
-            this.actions.doLogin();
-            let data = await LoginService.checkExists('mahershi1999@gmail.com');
-            if(data['success']){
-                try{
-                    GlobalVars.currentUser = UserModel.fromJson(data['data']);
-                }catch(err){
-                    console.log("Err: " + err)
-                }
-                this.navigation.navigate('DashboardScreen');
+        await MyGoogleSignIn.signInUsingGoogle().then(async (val)=>{
+            if(val === null){
+
             }else{
-                // unable to login, show ToastMessage
+                this.actions.doLogin();
+                console.log(JSON.stringify(val.user));
+                let data = await LoginService.checkExists(val.user.email);
+                if(data['success'] == 'true'){
+                    try{
+                        console.log("success");
+                        GlobalVars.currentUser = UserModel.fromJson(data['data']);
+                    }catch(err){
+                        console.log("Err: " + err)
+                    }
+                    this.navigation.navigate('DashboardScreen');
+                }else{
+                    console.log("does not exist");
+                    let data = await LoginService.createNew({
+                        email: val.user.email,
+                        name: val.user.name,
+                        password: 'mahershi',
+                        uname: val.user.name.split('@')[0]
+                    });
+                    if(data['success'] == 'true'){
+                        try{
+                            console.log("success");
+                            GlobalVars.currentUser = UserModel.fromJson(data['data']['user']);
+                        }catch(err){
+                            console.log("Err: " + err)
+                        }
+                        this.navigation.navigate('DashboardScreen');
+                    }else{
+
+                    }
+                }
+                this.doneLoginBind();
             }
-            this.doneLoginBind();
+
         });
     }
 

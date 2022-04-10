@@ -12,8 +12,8 @@ export default class ClusterModel{
     static newDefault(){
         let c = new ClusterModel();
         c.id = null;
-        c.user_id = 1;
-        // c.user_id = GlobalVars.currentUser.user_id;
+        // c.user_id = 1;
+        c.user_id = GlobalVars.currentUser.user_id;
         c.expenses = 0;
         c.created_date = null;
         return c;

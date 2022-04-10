@@ -23,7 +23,7 @@ export default class App extends Component{
               screenOptions={{
                   headerShown: false,
               }}
-              initialRouteName='DashboardScreen'
+              initialRouteName='LoginScreen'
             >
               <Stack.Screen
                   name="DashboardScreen"

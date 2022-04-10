@@ -1,16 +1,16 @@
-import {LOADED, LOADED_LOGIN, LOADING, LOADING_LOGIN} from "../constants/actionConstants";
+import {LOADED, LOADED_LOGOUT, LOADING, LOADING_LOGOUT} from "../constants/actionConstants";
 
 const INITIAL_STATE = {
     loading: false
 };
 
-const loginReducer = (state = INITIAL_STATE, action) => {
+const menuReducer = (state = INITIAL_STATE, action) => {
     switch(action.type){
-        case LOADING_LOGIN:
+        case LOADING_LOGOUT:
             return {
                 loading: true
             }
-        case LOADED_LOGIN:
+        case LOADED_LOGOUT:
             return {
                 loading: false
             }
@@ -19,4 +19,4 @@ const loginReducer = (state = INITIAL_STATE, action) => {
     }
 }
 
-export default loginReducer;
+export default menuReducer;

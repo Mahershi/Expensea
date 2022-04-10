@@ -9,8 +9,8 @@ export default class ClusterService{
         return await RestService.request({
             endpoint: API.clusters,
             queryParams: {
-                // 'user_id': GlobalVars.currentUser.user_id,
-                'user_id': 1
+                'user_id': GlobalVars.currentUser.id,
+                // 'user_id': 1
             }
         })
     }
