@@ -1,5 +1,12 @@
+/**
+* file: MenuScreen.js
+* author: Mahershi Bhavsar <msb753@uregin.ca>
+* Student Id: 200465975
+* purpose: Screen View Code for Menu Screen, has User Details, Menu Buttons and logout button.
+* */
+
 import React, {Component} from 'react';
-import {View, Text, TouchableNativeFeedback} from 'react-native';
+import {View, Text} from 'react-native';
 import {menuStyles} from "../../styles/menustyles";
 import BackButtonComponent from "../elements/BackButtonComponent";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -13,7 +20,11 @@ import {connect} from "react-redux";
 import {doLogout, logoutDone} from "../../actions/menuActions";
 import CustomLoader from "../elements/CustomLoader";
 
-
+/**
+ * MenuScreen
+ * purpose: View code for MenuScreen
+ * props: actions: actions, reducer: reducer, navigation: navigation
+ */
 class MenuScreen extends Component{
     constructor(props) {
         super(props);
@@ -42,7 +53,7 @@ class MenuScreen extends Component{
                             enable={true}
                         />
                     </View>
-                    <View style={{flex: 1}}></View>
+                    <View style={{flex: 1}}/>
                     <View style={menuStyles.profile}>
                         <View
                             style={menuStyles.iconBorder}
@@ -58,7 +69,7 @@ class MenuScreen extends Component{
                             <Text style={menuStyles.nameStyle}>Mahershi Bhavsar</Text>
                         </View>
                     </View>
-                    <View style={{flex: 1}}></View>
+                    <View style={{flex: 1}}/>
                     <View style={{
                         alignSelf: 'flex-start',
                         opacity: 0,

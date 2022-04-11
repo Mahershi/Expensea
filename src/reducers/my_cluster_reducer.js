@@ -1,3 +1,10 @@
+/*
+* file: my_cluster_reducer.js
+* author: Mahershi Bhavsar <msb753@uregin.ca>
+* Student Id: 200465975
+* purpose: Reducer for MyClusters Screen
+* */
+
 import {LOADED, LOADING} from "../constants/actionConstants";
 
 const INITIAL_STATE = {

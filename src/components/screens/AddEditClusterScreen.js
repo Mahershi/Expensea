@@ -1,3 +1,10 @@
+/**
+* file: AddEditClusterScreen.js
+* author: Mahershi Bhavsar <msb753@uregin.ca>
+* Student Id: 200465975
+* purpose: Screen Code for Adding of Modying as giving Cluster.
+* */
+
 import React, {Component} from "react";
 import {View, Text, TextInput, TouchableNativeFeedback} from 'react-native';
 import {editCluster} from "../../styles/clusters_styles";
@@ -9,13 +16,19 @@ import EditClusterController from "../../controllers/edit_cluster_controller";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import ClusterModel from "../../models/ClusterModel";
 
+/**
+ * AddEditClusterScreen
+ * purpose: To add or modify a given cluster
+ * props: navigation: navigation
+ * props.route.params: cluster: ClusterModel
+ */
 export default class AddEditClusterScreen extends Component{
     constructor(props) {
         super(props);
         this.cluster = this.props.route.params['cluster'];
-        console.log("TYPE")
-        console.log(this.cluster instanceof ClusterModel);
-        console.log(this.cluster);
+        //console.log("TYPE")
+        //console.log(this.cluster instanceof ClusterModel);
+        //console.log(this.cluster);
         this.newCluster = this.cluster.returnCopy();
         const {navigation} = this.props;
         this.controller = new EditClusterController({navigation});

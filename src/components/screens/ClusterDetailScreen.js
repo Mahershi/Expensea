@@ -1,3 +1,10 @@
+/**
+* file: ClusterDetailScreen.js
+* author: Mahershi Bhavsar <msb753@uregin.ca>
+* Student Id: 200465975
+* purpose: Screen View Code for particular Cluster and its expenses.
+* */
+
 import React, {Component} from "react";
 import {View, Text} from 'react-native';
 import {clusterDetail, myClusters} from "../../styles/clusters_styles";
@@ -11,7 +18,17 @@ import ClusterDetailController from "../../controllers/cluster_detail_controller
 import AddButtonComponent from "../elements/AddButtonComponent";
 import CustomLoader from "../elements/CustomLoader";
 
+/**
+ * ClusterDetailScreen
+ * purpose: To display expenses in a cluster
+ * props: navigation: navigation, reducer: reducer, actions: actions
+ * props.route.params: cluster: ClusterModel
+ */
 class ClusterDetailScreen extends Component{
+    /**
+     * Demo for data structure of 'data' recevied in props
+     * @type {[{head: {date: string, total: string}, data: string[], extra: [{name: string},{name: string}]}]}
+     */
     arr = [
         {
             head: {
@@ -32,11 +49,11 @@ class ClusterDetailScreen extends Component{
 
     constructor(props) {
         super(props);
-        console.log(JSON.stringify(props))
+        //console.log(JSON.stringify(props))
         const {navigation, reducer, actions} = this.props;
-        console.log(this.props.route.params);
+        //console.log(this.props.route.params);
         const {cluster} = this.props.route.params;
-        console.log(cluster);
+        //console.log(cluster);
         this.controller = new ClusterDetailController({
             navigation: navigation,
             reducer: reducer,

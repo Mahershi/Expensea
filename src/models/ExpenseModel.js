@@ -1,3 +1,10 @@
+/*
+* file: ExpenseModel.js
+* author: Mahershi Bhavsar <msb753@uregin.ca>
+* Student Id: 200465975
+* purpose: Model Class for Expenses
+* */
+
 import GlobalVars from "../helpers/GlobalVars";
 
 export default class ExpenseModel{
@@ -12,6 +19,10 @@ export default class ExpenseModel{
     year;
     date;
 
+    /**
+     * return a copy of the instance
+     * @returns {ExpenseModel}
+     */
     returnCopy(){
         let copy = new ExpenseModel();
         copy.id = this.id;
@@ -30,6 +41,11 @@ export default class ExpenseModel{
 
     }
 
+    /**
+     * Create an object of ExpenseModel form the json data provided
+     * @param json
+     * @returns {ExpenseModel}
+     */
     static fromJson(json){
         let e = new ExpenseModel();
         e.amount = json['amount'] ? json['amount'] : '0';
@@ -46,6 +62,11 @@ export default class ExpenseModel{
         return e;
     }
 
+    /**
+     * Create an object of the model based on data provided
+     * @param json
+     * @returns {ExpenseModel}
+     */
     static fromProp(json){
         let e = new ExpenseModel();
         e.amount = json['amount'] ? json['amount'] : '0';
@@ -60,7 +81,10 @@ export default class ExpenseModel{
         return e;
     }
 
-    // TODO: GlobalVars setup
+    /**
+     * Create an object for the model with user_id initialized
+     * @returns {ExpenseModel}
+     */
     static newDefault(){
         let e = new ExpenseModel();
         e.id = null;
@@ -75,6 +99,13 @@ export default class ExpenseModel{
         return e;
     }
 
+    /**
+     * Create an object with date initialize.
+     * Used when Add Expense is triggered in the MonthExpensesScreen to create object for specific month and year
+     * @param monthIndex
+     * @param year
+     * @returns {ExpenseModel}
+     */
     static newForMonthYear({monthIndex, year}){
         let e = new ExpenseModel();
         e.id = null;
@@ -88,6 +119,7 @@ export default class ExpenseModel{
 
         return e;
     }
+
 
     toJson(){
         let dict = {};

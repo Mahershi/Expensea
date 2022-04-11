@@ -1,6 +1,13 @@
+/**
+* file: MonthlyExpensesScreen.js
+* author: Mahershi Bhavsar <msb753@uregin.ca>
+* Student Id: 200465975
+* purpose: Screen View code for particular month of a year.
+* */
+
 import React, {Component} from "react";
 import {View, Text, TouchableNativeFeedback} from 'react-native';
-import {expenseStyles2, monthExpensePage} from "../../styles/styles";
+import {monthExpensePage} from "../../styles/styles";
 import BackButtonComponent from "../elements/BackButtonComponent";
 import MonthYearControlElement from "../elements/MonthYearControlElement";
 import ButtonComponent from "../elements/ButtonComponent";
@@ -15,20 +22,28 @@ import {connect} from "react-redux";
 import {loadMonthlyExpense, monthlyExpenseLoaded} from "../../actions/monthExpenseActions";
 import CustomLoader from "../elements/CustomLoader";
 
+/**
+ * MonthlyExpenseScreen
+ * purpose: View Code for MontylyExpenses Screen
+ */
 class MonthlyExpensesScreen extends Component{
+    /**
+     * Demo data structure for 'data' received in the props
+     * @type {[{head: {date: string, total: string}, data: string[], more: [{name: string},{name: string}]}]}
+     */
     arr = [
         {
             head: {
-                'date': '1212',
+                'date': '2022-04-08',
                 'total': '2111'
             },
             more: [
-                {name: 'name'},
-                {name: 'name2'},
+                {name: 'Exp1', id: '1'},
+                {name: 'Exp2', id: '2'},
             ],
             data: [
-                '/',
-                'ss'
+                '1',
+                '2'
             ],
         },
 
@@ -50,11 +65,11 @@ class MonthlyExpensesScreen extends Component{
     }
 
     componentDidUpdate(prevProps: Readonly<P>, prevState: Readonly<S>, snapshot: SS) {
-        // console.log("In COMP Update MOnthly");
-        // console.log()
-        // console.log(JSON.stringify(this.props));
+        // //console.log("In COMP Update MOnthly");
+        // //console.log()
+        // //console.log(JSON.stringify(this.props));
         if(this.props.route.params?.update == true){
-            // console.log("Did Update");
+            // //console.log("Did Update");
             this.controller.refreshBind();
             this.props.route.params.update = false;
         }
@@ -63,9 +78,9 @@ class MonthlyExpensesScreen extends Component{
 
     render() {
         const {reducer} = this.props;
-        // console.log("Reducer: ")
-        // // console.log(JSON.stringify(reducer));
-        // console.log(reducer['data']['monthTotal'])
+        // //console.log("Reducer: ")
+        // // //console.log(JSON.stringify(reducer));
+        // //console.log(reducer['data']['monthTotal'])
         return (
             <View
                 style={{flex: 1}}
@@ -115,7 +130,7 @@ class MonthlyExpensesScreen extends Component{
                     <SwipeListView
                         useSectionList
                         // keyExtractor={(item, index) =>{
-                        //     console.log(item+index);
+                        //     //console.log(item+index);
                         //     return item+index;
                         // }}
                         sections={
@@ -164,7 +179,7 @@ class MonthlyExpensesScreen extends Component{
                 <View style={monthExpensePage.fab}>
                     <TouchableNativeFeedback
                         onPress={()=>{
-                            console.log("tapped");
+                            //console.log("tapped");
                             this.controller.newForMonthBind();
                         }}
                     >

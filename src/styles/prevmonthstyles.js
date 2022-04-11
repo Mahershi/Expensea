@@ -1,7 +1,17 @@
+/*
+* file: prevmonthstyles.js
+* author: Mahershi Bhavsar <msb753@uregin.ca>
+* Student Id: 200465975
+* purpose: Styling code for Last 3 Months Blocks on Dashboard
+* */
+
 import React from 'react';
 import {StyleSheet, Dimensions} from "react-native";
 import Color from "../constants/colors";
 
+/**
+ * Style for last 3 months blocks displayed on Dashboard Screen
+ */
 export const prevMonths = StyleSheet.create({
     root: {
         flexDirection: 'row',

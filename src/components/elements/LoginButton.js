@@ -1,16 +1,27 @@
+/**
+* file: LoginButton.js
+* author: Mahershi Bhavsar <msb753@uregin.ca>
+* Student Id: 200465975
+* purpose: View code for 'Sign In Using Google' button with callback in the props.
+* */
+
 import React, {Component} from 'react';
 import {View, Text, TouchableNativeFeedback, Image} from 'react-native';
 import {loginPage} from "../../styles/styles";
-import MyGoogleSignIn from "../../helpers/googleSignin";
 
+/**
+ * LoginButton
+ * purpose: UI for login button
+ * props: callBack: function
+ */
 export default class LoginButton extends Component{
     render() {
-        console.log(require('../../assets/img/google.png'))
+        //console.log(require('../../assets/img/google.png'))
         return (
             <View>
                 <TouchableNativeFeedback
                     onPress={()=>{
-                        console.log(this.callBack);
+                        //console.log(this.callBack);
                         this.props.callBack();
                     }}
                 >

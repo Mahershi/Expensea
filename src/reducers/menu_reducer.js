@@ -1,4 +1,11 @@
-import {LOADED, LOADED_LOGOUT, LOADING, LOADING_LOGOUT} from "../constants/actionConstants";
+/*
+* file: menu_reducer.js
+* author: Mahershi Bhavsar <msb753@uregin.ca>
+* Student Id: 200465975
+* purpose: Reducer for Menu Screen
+* */
+
+import {LOADED_LOGOUT, LOADING_LOGOUT} from "../constants/actionConstants";
 
 const INITIAL_STATE = {
     loading: false

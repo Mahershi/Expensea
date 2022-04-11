@@ -1,6 +1,13 @@
+/**
+* file: DashboardScreen.js
+* author: Mahershi Bhavsar <msb753@uregin.ca>
+* Student Id: 200465975
+* purpose: Screen View code for Dashboard
+* */
+
 import React, {Component} from "react";
 import {dashboardPage} from "../../styles/styles";
-import {Text, TouchableNativeFeedback, View} from 'react-native';
+import {TouchableNativeFeedback, View} from 'react-native';
 import MonthExpenseBrief from "../elements/MonthExpenseBrief";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import DashboardList from "../elements/DashboardList";
@@ -12,21 +19,26 @@ import CustomLoader from "../elements/CustomLoader";
 import PreviousMonths from "../elements/PreviousMonths";
 import AddButtonComponent from "../elements/AddButtonComponent";
 
-
+/**
+ * DashboardScreen
+ * purpose: View code for dashboard
+ * props: reducer: reducer, navigation, navigation, actions: actions
+ * props.route.params: update: boolean
+ */
 class DashboardScreen extends Component{
     constructor(props) {
         super(props);
         const {reducer, actions, navigation} = this.props;
         this.controller = new DashboardController({actions: actions, navigation: navigation, reducer: reducer});
-        console.log("Dashboard Reducer")
-        console.log(reducer);
+        //console.log("Dashboard Reducer")
+        //console.log(reducer);
     }
 
     componentDidUpdate(prevProps: Readonly<P>, prevState: Readonly<S>, snapshot: SS) {
-        console.log("In COMP Update");
-        console.log()
-        if(this.props.route.params?.update == true){
-            console.log("Did Update");
+        //console.log("In COMP Update");
+        //console.log()
+        if(this.props.route.params?.update === true){
+            //console.log("Did Update");
             this.controller.refreshBind();
             this.props.route.params.update = false;
         }
@@ -35,10 +47,10 @@ class DashboardScreen extends Component{
 
     render() {
         const {reducer} = this.props;
-        // console.log("RE Dashboard Reducer")
-        // console.log(reducer);
-        console.log("Rendering Dashboard");
-        console.log(reducer);
+        // //console.log("RE Dashboard Reducer")
+        // //console.log(reducer);
+        //console.log("Rendering Dashboard");
+        //console.log(reducer);
         return (
           <View
             style={{flex: 1}}

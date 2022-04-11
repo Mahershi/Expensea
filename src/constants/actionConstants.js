@@ -1,3 +1,10 @@
+/**
+* file: actionConstants.js
+* author: Mahershi Bhavsar <msb753@uregin.ca>
+* Student Id: 200465975
+* purpose: Constants to use in Redux Actions.
+* */
+
 export const LOADING = 'LOADING';
 export const LOADED = 'LOADED';
 export const LOADING_LOGIN = 'LOADING_LOGIN';

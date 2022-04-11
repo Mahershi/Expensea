@@ -1,3 +1,10 @@
+/**
+* file: dashboard_controller.js
+* author: Mahershi Bhavsar <msb753@uregin.ca>
+* Student Id: 200465975
+* purpose: Controller Class for Dashboard Screen
+* */
+
 import ExpenseService from "../services/expenses_services";
 import ExpenseModel from "../models/ExpenseModel";
 import CategoryService from "../services/category_services";
@@ -21,17 +28,17 @@ export default class DashboardController {
     }
 
     async deleteExpense({expense}){
-        console.log("delete: " + expense.id);
+        //console.log("delete: " + expense.id);
         await ExpenseService.deleteExpense({id: expense.id});
         this.refreshBind();
     }
 
     gotoMonthExpenses({month, year}){
-        console.log("GOto: " + month + " " + year)
+        //console.log("GOto: " + month + " " + year)
         this.navigation.navigate('MonthExpenseScreen', {month: month, year: year, navigation: this.navigation});
-        console.log("OLD");
+        //console.log("OLD");
 
-        console.log(JSON.stringify(this.data));
+        //console.log(JSON.stringify(this.data));
     }
 
     gotoAddEditScreen(){
@@ -61,7 +68,7 @@ export default class DashboardController {
             });
 
         }
-        console.log("MOnths: " + JSON.stringify(this.lastMonths));
+        //console.log("MOnths: " + JSON.stringify(this.lastMonths));
     }
 
     async loadInitial(){
@@ -75,7 +82,7 @@ export default class DashboardController {
     }
 
     async refreshDashboardOnNavigatingBack(){
-        console.log("Refreshing");
+        //console.log("Refreshing");
         this.actions.loadDashboard();
         await this.fetchCurrentMonthExpenses();
         this.actions.dashboardLoaded(this.data['data'])
@@ -102,7 +109,7 @@ export default class DashboardController {
     }
 
     async fetchUserDateSpan(){
-        console.log('fetching date span');
+        //console.log('fetching date span');
         let responseData = await ExpenseService.getDateSpanForUser();
         GlobalVars.oldestMonth = responseData['data']['oldest_month'];
         GlobalVars.latestMonth = responseData['data']['latest_month'];
@@ -113,20 +120,20 @@ export default class DashboardController {
     async fetchCurrentMonthExpenses(){
         let today = new Date();
         this.data = await ExpenseService.fetchForMonthDayWise({month: today.getMonth() + 1, year: today.getFullYear()});
-        console.log('DAYA');
-        console.log(this.data);
+        //console.log('DAYA');
+        //console.log(this.data);
         this.data = GlobalVars.reformatDayWiseData(this.data);
 
         // let newData = []
         // Object.keys(this.data['data']['days']).forEach((e)=>{
-        //     // console.log(e);
+        //     // //console.log(e);
         //     let temp = {}
         //     temp['extra'] = this.data['data']['days'][e]['expenses'];
         //     temp['data'] = []
         //     this.data['data']['days'][e]['expenses'].forEach((e)=>{
         //         temp['data'].push(e['id'])
         //     })
-        //     console.log("\n\n");
+        //     //console.log("\n\n");
         //     temp['head'] = {}
         //     temp['head']['date'] = e
         //     temp['head']['total'] = this.data['data']['days'][e]['total']
@@ -134,7 +141,7 @@ export default class DashboardController {
         // })
         //
         // // newData.forEach((e)=>{
-        // //     console.log(e);
+        // //     //console.log(e);
         // // })
         // this.data['data']['days'] = newData
 

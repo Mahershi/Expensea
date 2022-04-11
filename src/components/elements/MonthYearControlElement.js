@@ -1,3 +1,10 @@
+/**
+* file: MonthYearControlElement.js
+* author: Mahershi Bhavsar <msb753@uregin.ca>
+* Student Id: 200465975
+* purpose: View code for the carousels provided to select year and month to display specific month expenses.
+* */
+
 import React, {Component} from "react";
 import {View, Text, Dimensions, TouchableWithoutFeedback} from 'react-native';
 import {monthYearControlStyles} from "../../styles/styles";
@@ -5,22 +12,13 @@ import Carousel from "react-native-snap-carousel";
 import Color from "../../constants/colors";
 import GlobalVars from "../../helpers/GlobalVars";
 
-
-
+/**
+ * MonthYearControlElement
+ * purpose: to control current month and year in MonthlyExpenseScreen
+ * props: months: Array, years: Array, curMonth: string, curYear: string, callback: function, total: string
+ */
 export default class MonthYearControlElement extends Component{
-    // years = [
-    //     '2019',
-    //     '2020',
-    //     '2021',
-    //     '2022'
-    // ]
-    // months = [
-    //     'Jan',
-    //     'Feb',
-    //     'Mar',
-    //     'Apr',
-    //     "Jun",
-    // ]
+
 
     constructor(props) {
         super(props);
@@ -30,21 +28,19 @@ export default class MonthYearControlElement extends Component{
         this.curMonth = curMonth;
         this.curYear = curYear;
         this.callback = callback;
-        console.log("CB:")
-        console.log(callback)
+        //console.log("CB:")
+        //console.log(callback)
     }
 
     componentDidMount() {
         this.monthCarousel.snapToItem(this.curMonth-1);
         this.yearCarousel.snapToItem(this.years.indexOf(this.curYear));
-        console.log("snapped");
+        //console.log("snapped");
     }
 
-
-
     render() {
-        console.log("CUR YEAR: " + this.curYear)
-        console.log(this.years);
+        //console.log("CUR YEAR: " + this.curYear)
+        //console.log(this.years);
         return (
             <View
                 style={monthYearControlStyles.container}
@@ -81,10 +77,10 @@ export default class MonthYearControlElement extends Component{
                         sliderWidth={Dimensions.get('window').width * 0.65}
                         itemWidth={Dimensions.get('window').width * 0.18}
                         onSnapToItem={(index)=>{
-                            console.log(index)
+                            //console.log(index)
                             this.curYear = this.years[index];
-                            console.log("new");
-                            console.log(this.curYear);
+                            //console.log("new");
+                            //console.log(this.curYear);
                             this.callback({month: this.curMonth, year: this.curYear});
                         }}
                         inactiveSlideScale={1}
@@ -113,10 +109,10 @@ export default class MonthYearControlElement extends Component{
                         sliderWidth={Dimensions.get('window').width * 0.65}
                         itemWidth={Dimensions.get('window').width * 0.18}
                         onSnapToItem={(index)=>{
-                            // console.log(index)
+                            // //console.log(index)
                             this.curMonth = index+1
-                            console.log("new");
-                            console.log(this.curMonth);
+                            //console.log("new");
+                            //console.log(this.curMonth);
                             this.callback({month: this.curMonth, year: this.curYear});
                         }}
                         inactiveSlideScale={1}

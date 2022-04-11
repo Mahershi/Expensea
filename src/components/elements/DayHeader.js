@@ -1,8 +1,22 @@
-import React, {Component, PureComponent} from "react";
+/**
+* file: DayHeader.js
+* author: Mahershi Bhavsar <msb753@uregin.ca>
+* Student Id: 200465975
+* purpose: View code for displaying the header of the section list in MonthlyExpenseScreen. Header displays
+* the day of the month and the week.
+* */
+
+import React, {PureComponent} from "react";
 import {View, Text} from 'react-native';
 import {expenseStyles2} from "../../styles/styles";
 import GlobalVars from "../../helpers/GlobalVars";
 
+
+/**
+ * DayHeader
+ * purpose: TO display day in MonthExpenseScreen
+ * props: date: string
+ */
 export default class DayHeader extends PureComponent{
     constructor(props) {
         super(props);

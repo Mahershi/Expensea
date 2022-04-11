@@ -1,3 +1,10 @@
+/**
+* file: MenuButton.js
+* author: Mahershi Bhavsar <msb753@uregin.ca>
+* Student Id: 200465975
+* purpose: View code for dynamic menu button.
+* */
+
 import React, {Component} from "react";
 import {View, Text, TouchableNativeFeedback} from "react-native";
 import {menuButton} from "../../styles/menustyles";
@@ -5,7 +12,11 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Color from "../../constants/colors";
 import CustomSpacer from "./CustomSpacer";
 
-
+/**
+ * MenuButton
+ * purpose: Custom View Component to display dynamic Menu Button
+ * props: callback: function, title: string, iconName: string
+ */
 export default class MenuButton extends Component{
     constructor(props) {
         super(props);

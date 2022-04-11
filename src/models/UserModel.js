@@ -1,3 +1,10 @@
+/*
+* file: UserModel.js
+* author: Mahershi Bhavsar <msb753@uregin.ca>
+* Student Id: 200465975
+* purpose: Model Class for User
+* */
+
 export default class UserModel{
     id;
     name;
@@ -9,6 +16,11 @@ export default class UserModel{
     imageUrl;
     isSuperUser = false;
 
+    /**
+     * Create user model from the json data provided
+     * @param json
+     * @returns {UserModel}
+     */
     static fromJson(json) {
         let user = new UserModel();
         user.id = json['id'] ? json['id'] : '';

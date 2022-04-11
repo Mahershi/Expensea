@@ -1,4 +1,11 @@
-import React, {Component, PureComponent} from "react";
+/**
+* file: ExpenseTile.js
+* author: Mahershi Bhavsar <msb753@uregin.ca>
+* Student Id: 200465975
+* purpose: View code for displaying individual expense on the dashboard page as well as in particular cluster.
+* */
+
+import React, {PureComponent} from "react";
 import {View, Text, TouchableNativeFeedback} from 'react-native';
 import {expenseStyles} from "../../styles/styles";
 import CustomSpacer from "./CustomSpacer";
@@ -8,6 +15,12 @@ import ExpenseModel from "../../models/ExpenseModel";
 import CategoryModel from "../../models/CategoryModel";
 import ClusterModel from "../../models/ClusterModel";
 
+
+/**
+ * ExpenseTile
+ * purpose: view code for individual expense display
+ * props: expense: Dictionary, navigation: navigation,
+ */
 export default class ExpenseTile extends PureComponent{
     constructor(props) {
         super(props);
@@ -34,7 +47,7 @@ export default class ExpenseTile extends PureComponent{
                 }}>
                     <TouchableNativeFeedback
                         onPress={()=>{
-                            console.log("pressed");
+                            //console.log("pressed");
                             this.props.navigation.navigate('AddEditExpenseScreen', {
                                 expense: this.expense,
                                 backToDashboard: false,

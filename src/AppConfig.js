@@ -1,9 +1,23 @@
+/*
+* file: AppConfig.js
+* author: Mahershi Bhavsar <msb753@uregin.ca>
+* Student Id: 200465975
+* purpose: Environment Configuration for Application
+* */
+
+/**
+ * EnvironmentClass
+ * To work as enums for AppConfig
+ */
 export class Environment{
     static development = 'Development';
     static production = 'Production';
     static staging = 'Staging';
 }
 
+/**
+ * Config class for app
+ */
 class Config{
     // var baseUrl;
     // static env;
@@ -15,10 +29,17 @@ class Config{
 
 }
 
+/**
+ * MyAppConfig
+ */
 export class MyAppConfig{
     static Config;
     static app = 'app/';
 
+    /**
+     * Set API base url based on environment
+     * @param envString
+     */
     static setEnvironment(envString){
         switch (String(envString)){
             case Environment.development:
@@ -38,7 +59,7 @@ export class MyAppConfig{
                 );
                 break;
             default:
-                console.log("defaults");
+                //console.log("defaults");
 
         }
     }

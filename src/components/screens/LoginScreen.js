@@ -1,5 +1,12 @@
+/**
+* file: LoginScreen.js
+* author: Mahershi Bhavsar <msb753@uregin.ca>
+* Student Id: 200465975
+* purpose: Screen View Code for Login Screen
+* */
+
 import React, {Component} from "react";
-import {View, Text, StyleSheet, ActivityIndicator, Modal} from 'react-native';
+import {View} from 'react-native';
 import {loginPage} from "../../styles/styles";
 import AppTitle from "../elements/AppTitle";
 import LoginButton from "../elements/LoginButton";
@@ -9,18 +16,21 @@ import {bindActionCreators} from 'redux';
 import LoginController from "../../controllers/login_controller";
 import CustomLoader from "../elements/CustomLoader";
 
-
+/**
+ * LoginScreen
+ * purpose: UI design for Login Screen
+ */
 class LoginScreen extends Component{
     constructor(props) {
         super(props);
-        console.log(props);
+        //console.log(props);
         const {actions, reducer, navigation} = this.props;
         this.controller = new LoginController(actions, reducer, navigation);
     }
 
     render() {
         const {reducer} = this.props;
-        console.log("in render");
+        //console.log("in render");
         return (
             <View
                 style={loginPage.pageStyle}
@@ -40,6 +50,7 @@ class LoginScreen extends Component{
         );
     }
 }
+
 function mapStateToProps(state) {
     return {
         reducer: state.loginReducer

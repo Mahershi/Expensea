@@ -1,5 +1,12 @@
+/**
+* file: AddEditExpenseScreen.js
+* author: Mahershi Bhavsar <msb753@uregin.ca>
+* Student Id: 200465975
+* purpose: Screen Code for Adding / Modifying a given Expense.
+* */
+
 import React, {Component} from "react";
-import {View, Text, TouchableNativeFeedback, TouchableWithoutFeedback, TextInput, Dimensions} from 'react-native';
+import {View, Text, TouchableNativeFeedback, TextInput, Dimensions} from 'react-native';
 import {editExpenseStyle} from "../../styles/editexpensestyle";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import Color from "../../constants/colors";
@@ -9,9 +16,14 @@ import Carousel from "react-native-snap-carousel";
 import GlobalVars from "../../helpers/GlobalVars";
 import CategoryModel from "../../models/CategoryModel";
 import EditExpenseController from "../../controllers/edit_expense_controller";
-import ExpenseModel from "../../models/ExpenseModel";
 
-
+/**
+ * AddEditExpenseScreen
+ * purpose: To Add/Modify a given expense
+ * props: navigation: navigation
+ * props.route.params: expense: ExpenseModel, backToDashboard: boolean, backToMonthly: boolean,
+ * backToCluster: booleans, clusterReloadBind: function
+ */
 export default class AddEditExpenseScreen extends Component{
     cats = ['one', 'twosssssssssssss', 'three', 'four', 'five']
     constructor(props) {
@@ -48,11 +60,11 @@ export default class AddEditExpenseScreen extends Component{
                         <View style={editExpenseStyle.roundedButtonBG}>
                             <TouchableNativeFeedback
                                 onPress={()=>{
-                                    console.log("tapped")
+                                    //console.log("tapped")
                                     try{
                                         this.navigation.goBack();
                                     }catch(e){
-                                        console.log("Going BAck Error: " + e);
+                                        //console.log("Going BAck Error: " + e);
                                     }
                                 }}
                             >
@@ -72,7 +84,7 @@ export default class AddEditExpenseScreen extends Component{
                     <View style={editExpenseStyle.roundedButtonBG}>
                         <TouchableNativeFeedback
                             onPress={()=>{
-                                console.log("tapped")
+                                //console.log("tapped")
                                 this.controller.saveExpenseBind({expense: this.newExp});
                             }}
                         >
@@ -98,7 +110,7 @@ export default class AddEditExpenseScreen extends Component{
                                     this.datePickerOpen = false;
                                     this.currentDate = date;
                                     this.newExp.expenseDate = this.currentDate.toISOString()
-                                    console.log(this.currentDate)
+                                    //console.log(this.currentDate)
                                     this.setState({})
                                 }}
                                 onCancel={()=>{
@@ -154,7 +166,6 @@ export default class AddEditExpenseScreen extends Component{
                             this.setState({});
                         }}
                         style={editExpenseStyle.nameInput}
-                        onSubmitEditing={(value)=>{}}
                         value={this.newExp.name.toString()}
                         placeholder='Expense Name'
                         textAlign='center'
@@ -174,7 +185,7 @@ export default class AddEditExpenseScreen extends Component{
                             renderItem={({item, index})=>{
                                 return <TouchableNativeFeedback
                                     onPress={()=>{
-                                        console.log("Tapped : "+ index);
+                                        //console.log("Tapped : "+ index);
                                         this.categoryCarousel.snapToItem(index, true);
                                     }
                                     }
@@ -187,7 +198,7 @@ export default class AddEditExpenseScreen extends Component{
                             activeSlideOffset={0}
                             inactiveSlideScale={1}
                             onSnapToItem={(index)=>{
-                                console.log("To: " + index)
+                                //console.log("To: " + index)
                                 this.newExp.categoryId = GlobalVars.categories[index].id
                             }}
 

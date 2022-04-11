@@ -1,8 +1,21 @@
+/**
+* file: BackButtonComponent.js
+* author: Mahershi Bhavsar <msb753@uregin.ca>
+* Student Id: 200465975
+* purpose: Provides a reusable Component with uniform '<' design with dynamic callback on press to use as a back button
+* */
+
 import React, {Component} from 'react';
 import {TouchableWithoutFeedback, View} from 'react-native';
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import Color from "../../constants/colors";
 
+
+/**
+ * BackButtonComponent
+ * purpose: To provide back button
+ * props: enable: boolean, callback: function, invert: boolean
+ */
 export default class BackButtonComponent extends Component{
     render() {
         return (

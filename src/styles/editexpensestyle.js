@@ -1,7 +1,17 @@
+/*
+* file: editexpensestyle.js
+* author: Mahershi Bhavsar <msb753@uregin.ca>
+* Student Id: 200465975
+* purpose: Styling code for Add/Edit Expense Screen
+* */
+
 import React from 'react';
-import {StyleSheet, Dimensions} from "react-native";
+import {StyleSheet} from "react-native";
 import Color from "../constants/colors";
 
+/**
+ * Style for AddEditExpense Screen
+ */
 export const editExpenseStyle = StyleSheet.create({
     container: {
         flex: 1,

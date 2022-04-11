@@ -1,7 +1,17 @@
+/*
+* file: menustyles.js
+* author: Mahershi Bhavsar <msb753@uregin.ca>
+* Student Id: 200465975
+* purpose: Styling code for Menu Screen
+* */
+
 import React from 'react';
 import {StyleSheet, Dimensions} from "react-native";
 import Color from "../constants/colors";
 
+/**
+ * Style for Logout Button
+ */
 export const logoutButton = StyleSheet.create({
    bg: {
       borderRadius: 12,
@@ -17,6 +27,10 @@ export const logoutButton = StyleSheet.create({
    }
 })
 
+/**
+ * Style for MenuButton
+ * @type {{rowLeft: {alignItems: string, flexDirection: string, justifyContent: string}, root: {padding: number, borderColor: string, borderRadius: number, alignItems: string, borderWidth: number, flexDirection: string, justifyContent: string}, iconBg: {padding: number, backgroundColor: string, borderRadius: number}, title: {color: string, letterSpacing: number, fontSize: number}}}
+ */
 export const menuButton = StyleSheet.create({
    iconBg: {
       borderRadius: 100,
@@ -47,6 +61,9 @@ export const menuButton = StyleSheet.create({
    }
 })
 
+/**
+ * Style for MenuScreen
+ */
 export const menuStyles = StyleSheet.create({
    rootContainer: {
 

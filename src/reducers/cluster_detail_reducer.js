@@ -1,3 +1,10 @@
+/*
+* file: cluster_detail_reducer.js
+* author: Mahershi Bhavsar <msb753@uregin.ca>
+* Student Id: 200465975
+* purpose: Reducer for ClusterDetails Screen
+* */
+
 import {LOADED, LOADING} from "../constants/actionConstants";
 
 const INITIAL_STATE = {

@@ -1,22 +1,35 @@
-import React, {Component, PureComponent} from 'react';
+/**
+* file: ExpenseTile.js
+* author: Mahershi Bhavsar <msb753@uregin.ca>
+* Student Id: 200465975
+* purpose: View code for displaying individual expense on the MonthlyExpensePage
+* */
+
+import React, {PureComponent} from 'react';
 import {View, Text, TouchableNativeFeedback} from 'react-native';
 import Color from "../../constants/colors";
-import {expenseStyles, expenseStyles2} from "../../styles/styles";
+import {expenseStyles2} from "../../styles/styles";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import CustomSpacer from "./CustomSpacer";
 import CategoryModel from "../../models/CategoryModel";
 import ClusterModel from "../../models/ClusterModel";
 import ExpenseModel from "../../models/ExpenseModel";
 
+
+/**
+ * ExpenseTile2
+ * purpose: view code for individual expense display
+ * props: expense: Dictionary, navigation: navigation,
+ */
 export default class ExpenseTile2 extends PureComponent{
     constructor(props) {
         super(props);
         const {data} = this.props;
         this.expense = new ExpenseModel.fromJson(data);
-        // console.log("Expense:")
-        // // console.log(data);
-        // console.log(this.expense);
-        // console.log(this.expense.categoryId);
+        // //console.log("Expense:")
+        // // //console.log(data);
+        // //console.log(this.expense);
+        // //console.log(this.expense.categoryId);
 
     }
     render() {
@@ -37,7 +50,7 @@ export default class ExpenseTile2 extends PureComponent{
                 }}>
                     <TouchableNativeFeedback
                         onPress={()=>{
-                            console.log("pressed");
+                            //console.log("pressed");
                             this.props.navigation.navigate('AddEditExpenseScreen', {
                                 expense: this.expense,
                                 backToDashboard: false,

@@ -1,7 +1,17 @@
+/*
+* file: styles.js
+* author: Mahershi Bhavsar <msb753@uregin.ca>
+* Student Id: 200465975
+* purpose: Styling code for Major sections of the application
+* */
+
 import React from 'react';
 import {StyleSheet, Dimensions} from "react-native";
 import Color from "../constants/colors";
 
+/**
+ * Style for ButtonComponent
+ */
 export const buttonStyle = StyleSheet.create({
     primaryBg: {
         backgroundColor: Color.primaryColor,
@@ -20,6 +30,9 @@ export const buttonStyle = StyleSheet.create({
     }
 })
 
+/**
+ * Style for ExpenseTile2
+ */
 export const expenseStyles2 = StyleSheet.create({
     editIconStyle: {
         color: Color.textColor,
@@ -82,7 +95,10 @@ export const expenseStyles2 = StyleSheet.create({
     },
 })
 
-
+/**
+ * Style for ExpenseTile
+ * @type {{headContainerStyle: {padding: number, backgroundColor: string, borderRadius: number, flexDirection: string, justifyContent: string}, expenseNameStyle: {color: string, fontSize: number}, headTotalStyle: {color: string, fontSize: number}, headDayStyle: {color: string, fontSize: number}, expenseTileStyle: {flexDirection: string, flex: number, justifyContent: string}, dashboardListStyle: {paddingBottom: number, paddingRight: number, paddingTop: number, paddingLeft: number}, editIconBgStyle: {backgroundColor: string, borderRadius: number, width: number, justifyContent: string, height: number}, editIconStyle: {alignSelf: string, color: string}, expenseCategoryStyle: {color: string, fontSize: number}, headDateStyle: {color: string, fontSize: number}}}
+ */
 export const expenseStyles = StyleSheet.create({
     editIconStyle: {
         color: Color.textColor,
@@ -153,6 +169,9 @@ export const expenseStyles = StyleSheet.create({
 
 })
 
+/**
+ * TextStyle
+ */
 export const textStyles = StyleSheet.create({
     expenseHead: {
         fontSize: 28,
@@ -169,6 +188,9 @@ export const textStyles = StyleSheet.create({
 
 })
 
+/**
+ * Style for carousel in MonthYearControlElement
+ */
 export const monthYearControlStyles = StyleSheet.create({
     container: {
         flexDirection: 'row',
@@ -196,7 +218,9 @@ export const monthYearControlStyles = StyleSheet.create({
 })
 
 
-
+/**
+ * Style for MonthExpenseScreen
+ */
 export const monthExpensePage = StyleSheet.create({
     fab: {
         // width: 70,
@@ -245,6 +269,9 @@ export const monthExpensePage = StyleSheet.create({
     }
 })
 
+/**
+ * Style for Dashboard Screen
+ */
 export const dashboardPage = StyleSheet.create({
     topContainer: {
         marginTop: -20,
@@ -266,6 +293,9 @@ export const dashboardPage = StyleSheet.create({
     }
 })
 
+/**
+ * Style for LoginPage
+ */
 export const loginPage = StyleSheet.create({
     pageStyle: {
         flexDirection: 'column',

@@ -1,3 +1,10 @@
+/**
+* file: MyClustersScreen.js
+* author: Mahershi Bhavsar <msb753@uregin.ca>
+* Student Id: 200465975
+* purpose: Screen View code for displaying all the clusters of current user.
+* */
+
 import React, {Component} from "react";
 import {View, Text, TouchableNativeFeedback} from 'react-native';
 import {myClusters} from "../../styles/clusters_styles";
@@ -6,7 +13,6 @@ import CustomSpacer from "../elements/CustomSpacer";
 import {SwipeListView} from "react-native-swipe-list-view";
 import {expenseStyles} from "../../styles/styles";
 import ClusterTile from "../elements/ClusterTile";
-import IconButtonComponent from "../elements/IconButtonComponent";
 import MyClusterController from "../../controllers/my_clusters_controller";
 import {bindActionCreators} from "redux";
 import {loadMyClusters, myClustersLoaded} from "../../actions/myClusterActions";
@@ -17,17 +23,13 @@ import AddButtonComponent from "../elements/AddButtonComponent";
 import Color from "../../constants/colors";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
+/**
+ * MyClustersScreen
+ * purpose: View code for MyClusters screen
+ * props: reducer: reducer, actions: actions, navigation: navigation
+ * props.route.params: update: boolean
+ */
 class MyClustersScreen extends Component{
-    arr = [
-        {
-            title: 'One',
-            data: 'OneData'
-        },
-        {
-            title: 'Two',
-            data: 'TwoData'
-        }
-    ]
     constructor(props) {
         super(props);
 
@@ -49,8 +51,8 @@ class MyClustersScreen extends Component{
 
     render() {
         const {reducer} = this.props;
-        console.log("Reducer");
-        console.log(JSON.stringify(reducer));
+        //console.log("Reducer");
+        //console.log(JSON.stringify(reducer));
         return (
             <View style={myClusters.root}>
                 {reducer.loading ? <CustomLoader invert={true}/> : null}

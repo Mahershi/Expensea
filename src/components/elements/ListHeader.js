@@ -1,9 +1,23 @@
+/**
+* file: ListHeader.js
+* author: Mahershi Bhavsar <msb753@uregin.ca>
+* Student Id: 200465975
+* purpose: View code for displaying the header of the section list in DashboardList.js. Header displays
+* the date, day of the week and total amount of all the expenses for that date.
+* */
+
 import React, {Component, PureComponent} from "react";
 import {View, Text} from 'react-native';
 import {expenseStyles} from "../../styles/styles";
 import CustomSpacer from "./CustomSpacer";
 import GlobalVars from "../../helpers/GlobalVars";
 
+
+/**
+ * ListHeader
+ * purpose: TO display section list header on dashboard and individual cluster details
+ * props: date: string, total: string
+ */
 export default class ListHeader extends PureComponent{
     constructor(props) {
         super(props);

@@ -1,3 +1,10 @@
+/*
+* file: API.js
+* author: Mahershi Bhavsar <msb753@uregin.ca>
+* Student Id: 200465975
+* purpose: Contains all the API endpoint strings.
+* */
+
 export class API{
     static test = 'test';
 

@@ -1,9 +1,22 @@
+/**
+* file: PreviousMonths.js
+* author: Mahershi Bhavsar <msb753@uregin.ca>
+* Student Id: 200465975
+* purpose: View Code for Last 3 Months Blocks displayed on Dashboard
+* */
+
 import React, {Component} from "react";
-import {View, Text, FlatList, TouchableNativeFeedback} from 'react-native';
+import {View, Text, TouchableNativeFeedback} from 'react-native';
 import {prevMonths} from "../../styles/prevmonthstyles";
 import CustomSpacer from "./CustomSpacer";
 import GlobalVars from "../../helpers/GlobalVars";
 
+
+/**
+ * PreviousMonths
+ * purpose: UI Code for Last 3 Months Blocks on Dashboard
+ * props: months: Array, callback: function
+ */
 export default class PreviousMonths extends Component{
 
     render() {
@@ -25,11 +38,7 @@ export default class PreviousMonths extends Component{
 class PrevMonthTile extends Component{
     constructor(props) {
         super(props);
-        const {item} = this.props;
-        console.log("HEREE");
-        console.log(item);
-        // console.log(this.item['month']);
-        // console.log(this.item['month']);
+
     }
 
     render() {

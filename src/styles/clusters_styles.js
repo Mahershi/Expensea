@@ -1,7 +1,17 @@
+/*
+* file: clusters_styles.js
+* author: Mahershi Bhavsar <msb753@uregin.ca>
+* Student Id: 200465975
+* purpose: Styling code for Clusters
+* */
+
 import React from 'react';
 import {StyleSheet, Dimensions} from "react-native";
 import Color from "../constants/colors";
 
+/**
+ * Styles for AddEditClusterScreen
+ */
 export const editCluster = StyleSheet.create({
     root: {
         padding: 20,
@@ -40,6 +50,9 @@ export const editCluster = StyleSheet.create({
     }
 })
 
+/**
+ * Style for ClusterDetail Screen
+ */
 export const clusterDetail = StyleSheet.create({
     root: {
         flex: 1,
@@ -76,6 +89,9 @@ export const clusterDetail = StyleSheet.create({
     }
 })
 
+/**
+ * Style for MyClustersScreen
+ */
 export const myClusters = StyleSheet.create({
     root: {
         flex: 1,

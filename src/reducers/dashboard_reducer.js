@@ -1,3 +1,10 @@
+/*
+* file: dashboard_reducer.js
+* author: Mahershi Bhavsar <msb753@uregin.ca>
+* Student Id: 200465975
+* purpose: Reducer for Dashboard Screen
+* */
+
 import {LOADED, LOADING} from "../constants/actionConstants";
 
 const INITIAL_STATE = {
@@ -10,7 +17,7 @@ const INITIAL_STATE = {
 }
 
 const dashboardReducer = (state = INITIAL_STATE, action) => {
-    console.log("DS Reducer called");
+    //console.log("DS Reducer called");
     switch(action.type){
         case LOADING:
             return {

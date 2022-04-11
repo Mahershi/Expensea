@@ -1,6 +1,12 @@
+/**
+* file: ExpenseTile.js
+* author: Mahershi Bhavsar <msb753@uregin.ca>
+* Student Id: 200465975
+* purpose: View Code for displaying a Material Icon button when provided with an icon name in the props.
+* */
+
 import React, {Component} from "react";
 import {View, Text, TouchableNativeFeedback} from "react-native";
-import {buttonStyle} from "../../styles/styles";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import Color from "../../constants/colors";
 

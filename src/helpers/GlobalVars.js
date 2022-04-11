@@ -1,20 +1,36 @@
-import UserModel from "../models/UserModel";
+/**
+* file: GlobalVars.js
+* author: Mahershi Bhavsar <msb753@uregin.ca>
+* Student Id: 200465975
+* purpose: Contains GlobalVars class to encapsulate all the variables that need to be accessed from any screen
+* of the application.
+* */
+
 import CategoryModel from "../models/CategoryModel";
 import ClusterModel from "../models/ClusterModel";
 
+/**
+ * GlobalVars
+ * purpose: Class created to contain global variables to access from any point of application
+ */
 export default class GlobalVars {
     static categories: Array<CategoryModel> = [];
     static clusters: Array<ClusterModel> = [];
     static currentUser;
-    static oldestMonth = 8;
-    static oldestYear = 2020;
-    static latestMonth = 4;
-    static latestYear = 2022;
+    static oldestMonth;
+    static oldestYear;
+    static latestMonth;
+    static latestYear;
 
+    /**
+     * Reformat Data for expenses to a data structure accessible by SectionList
+     * @param data
+     * @returns {*}
+     */
     static reformatDayWiseData(data){
         let newData = []
         Object.keys(data['data']['days']).forEach((e)=>{
-            // console.log(e);
+            // //console.log(e);
             let temp = {}
             temp['extra'] = data['data']['days'][e]['expenses'];
             temp['data'] = []
@@ -28,7 +44,7 @@ export default class GlobalVars {
         })
 
         // newData.forEach((e)=>{
-        //     console.log(e);
+        //     //console.log(e);
         // })
         data['data']['days'] = newData
         return data;

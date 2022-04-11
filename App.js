@@ -1,3 +1,10 @@
+/*
+* file: App.js
+* author: Mahershi Bhavsar <msb753@uregin.ca>
+* Student Id: 200465975
+* purpose: Has Root Component which encapsulates Stack Navigation.
+* */
+
 import React, {Component} from 'react';
 import {NavigationContainer} from "@react-navigation/native";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
@@ -12,9 +19,15 @@ import MyClustersScreen from "./src/components/screens/MyClustersScreen";
 import ClusterDetailScreen from "./src/components/screens/ClusterDetailScreen";
 import AddEditClusterScreen from "./src/components/screens/AddEditClusterScreen";
 
+// To disbale yellow warning in debug
 LogBox.ignoreAllLogs(true);
+
+// Stack Navigator
 const Stack = createNativeStackNavigator();
 
+/**
+ * RootComponent
+ */
 export default class App extends Component{
   render() {
     return (

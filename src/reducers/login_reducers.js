@@ -1,4 +1,11 @@
-import {LOADED, LOADED_LOGIN, LOADING, LOADING_LOGIN} from "../constants/actionConstants";
+/*
+* file: login_reducer.js
+* author: Mahershi Bhavsar <msb753@uregin.ca>
+* Student Id: 200465975
+* purpose: Reducer for Login Screen
+* */
+
+import {LOADED_LOGIN, LOADING_LOGIN} from "../constants/actionConstants";
 
 const INITIAL_STATE = {
     loading: false

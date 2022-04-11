@@ -1,3 +1,10 @@
+/**
+* file: ClusterModel.js
+* author: Mahershi Bhavsar <msb753@uregin.ca>
+* Student Id: 200465975
+* purpose: Model Class for Clusters
+* */
+
 import GlobalVars from "../helpers/GlobalVars";
 
 export default class ClusterModel{
@@ -8,17 +15,24 @@ export default class ClusterModel{
     user_id;
 
 
-    // TODO: GLobalVar setup
+    /**
+     * Create a cluster object with initialized user_id
+     * @returns {ClusterModel}
+     */
     static newDefault(){
         let c = new ClusterModel();
         c.id = null;
         // c.user_id = 1;
-        c.user_id = GlobalVars.currentUser.user_id;
+        c.user_id = GlobalVars.currentUser.id;
         c.expenses = 0;
         c.created_date = null;
         return c;
     }
 
+    /**
+     * returns a copy of the provided cluster model
+     * @returns {ClusterModel}
+     */
     returnCopy(){
         let copy = new ClusterModel();
         copy.id = this.id;
@@ -30,6 +44,11 @@ export default class ClusterModel{
 
     }
 
+    /**
+     * Create ClusterModel object from the given json data
+     * @param json
+     * @returns {ClusterModel}
+     */
     static fromJson(json){
         let c = new ClusterModel();
         c.id = json['id'] ? json['id'] : '';
@@ -41,6 +60,10 @@ export default class ClusterModel{
         return c;
     }
 
+    /**
+     * Returns Dictionary/Json for the instance to send over API
+     * @returns {{}}
+     */
     toJson(){
         let dict = {}
         dict['name'] = this.name;
@@ -50,12 +73,22 @@ export default class ClusterModel{
         return dict;
     }
 
+    /**
+     * Returns dictionary/json for instance to send over specific API
+     * @returns {{}}
+     */
     toPatchJson(){
         let dict = {}
         dict['name'] = this.name;
         return dict;
     }
 
+    /**
+     * Get Cluster Object for the id provided
+     * @param id
+     * @param arr
+     * @returns {ClusterModel|null}
+     */
     static getObjectById({id, arr = GlobalVars.clusters}){
         for(let i=0; i<arr.length; i++){
             if(arr[i].id == id){
