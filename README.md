@@ -121,7 +121,8 @@ Go to a directory where you would like to clone the repository
 </table>
 
 #### GIFs
-<img src="https://i.ibb.co/t3jFd9d/login.gif"/>
+![login](https://user-images.githubusercontent.com/24571622/162708801-67029484-c53a-4c89-accb-e56ac4724bed.gif)
+
 
 
 
