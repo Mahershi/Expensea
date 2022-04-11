@@ -84,19 +84,19 @@ Go to a directory where you would like to clone the repository
 	constants:
 		/actionConstants.js: Action constants to use with Redux Actions
 		/colors.js: Colors constants for the application.
-					Theme of the application can be changed by just
-					changing color values in this file.
+		Theme of the application can be changed by just
+		changing color values in this file.
 	controllers: definitions for coontrollers
 	helpers:
 		/GlobarVar.js: has variables that need to be accessed globally
-						and any reusable method
+		and any reusable method
 		/googleSignin,js: Class encapsulating business login for google
-							signin.
+		signin.
 	models: model definitions
 	network:
 		/API.js: API endpoint string definitions
 		/config: Network config and class encapsulation for http calls
-				using axios.
+		using axios.
 	reducers: Reducer definitions for Redux State Management
 	services: Various API calls for different aspects
 	styles: Styling code for views.
@@ -121,6 +121,8 @@ Go to a directory where you would like to clone the repository
 </table>
 
 #### GIFs
+![login](https://user-images.githubusercontent.com/24571622/162703821-06aaa20e-04e9-4d58-bd29-f0fa7507a539.gif)
+
 
 ### Bugs
 1. Adding an expense in Cluster then navigating back to My Clusters Screen does not update the number of expenses displayed below the cluster name.
