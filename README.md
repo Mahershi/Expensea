@@ -79,8 +79,8 @@ Go to a directory where you would like to clone the repository
     
     actions: has definitions for Redux Action for state manipulation
     components:
-	    /elements: has reusable view components
-	    /screens: View code for Screens
+	    	/elements: has reusable view components
+	   	/screens: View code for Screens
 	constants:
 		/actionConstants.js: Action constants to use with Redux Actions
 		/colors.js: Colors constants for the application.
@@ -121,7 +121,20 @@ Go to a directory where you would like to clone the repository
 </table>
 
 #### GIFs
-![login](https://user-images.githubusercontent.com/24571622/162703821-06aaa20e-04e9-4d58-bd29-f0fa7507a539.gif)
+<table>
+  <tr>
+    <td width="33%">
+      ![login](https://user-images.githubusercontent.com/24571622/162703821-06aaa20e-04e9-4d58-bd29-f0fa7507a539.gif)
+    </td>
+    <td width="33%">
+      ![april](https://user-images.githubusercontent.com/24571622/162704099-698a1fee-5c70-442c-99aa-1293631db70d.gif)
+    </td>
+    <td width="33%">
+      ![switch month](https://user-images.githubusercontent.com/24571622/162704139-cd183b16-c61c-4926-a2bd-075960af6586.gif)
+    </td>
+  </tr>
+</table>
+
 
 
 ### Bugs
