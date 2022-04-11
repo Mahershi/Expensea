@@ -121,7 +121,19 @@ Go to a directory where you would like to clone the repository
 </table>
 
 #### GIFs
-<img src="https://i.ibb.co/t3jFd9d/login.gif" width="40" height="40" />
+<table>
+  <tr>
+    <td width="33%">
+      <img src="https://i.ibb.co/t3jFd9d/login.gif" />
+    </td>
+    <td width="33%">
+      <img src="https://i.ibb.co/Pwp2MJq/april.gif" />
+    </td>
+    <td width="33%">
+      <img src="https://i.ibb.co/L9DVwjG/switch-month.gif" />
+    </td>
+  </tr>
+</table>
 
 
 
