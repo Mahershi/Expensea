@@ -16,7 +16,7 @@ Version History
 
     1.0.0 - First Build
 
-Table of Contents:
+### Table of Contents:
 1. About
 2. Motivation
 3. Features
