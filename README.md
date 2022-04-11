@@ -215,9 +215,9 @@ Postgres
 
 
 ### Contact
-Mahershi Bhavsar
-University of Regina, Regina, SK
-msb753@uregina.ca
+Mahershi Bhavsar <br />
+University of Regina, Regina, SK <br />
+msb753@uregina.ca <br />
 
 ### Copyright
 
