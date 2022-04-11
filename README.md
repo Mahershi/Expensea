@@ -122,6 +122,15 @@ Go to a directory where you would like to clone the repository
 
 #### GIFs
 ![login](https://user-images.githubusercontent.com/24571622/162708801-67029484-c53a-4c89-accb-e56ac4724bed.gif)
+![april](https://user-images.githubusercontent.com/24571622/162709629-8f0c4cc8-446f-4a7a-89f5-9e8674a1e450.gif)
+![switchmonth](https://user-images.githubusercontent.com/24571622/162709639-3d94000f-2990-4006-9776-ef3fea7a5fbb.gif)
+![addcluster](https://user-images.githubusercontent.com/24571622/162709660-2ed36c0e-f42c-4ef0-9d5d-0ff1df6d0fe2.gif)
+![cluster](https://user-images.githubusercontent.com/24571622/162709668-454f391b-fb7a-481c-b855-251b76b6fd54.gif)
+![expenseactions](https://user-images.githubusercontent.com/24571622/162709685-9f410425-5c65-44a3-bee7-0e0ef7f57244.gif)
+![addexpensemonth](https://user-images.githubusercontent.com/24571622/162709701-9b82fbbb-3808-4c6d-a1d9-488a94024850.gif)
+![delete expense](https://user-images.githubusercontent.com/24571622/162709709-70d52bc6-d59d-4e4a-9660-a7cfa805a1ea.gif)
+![editxp](https://user-images.githubusercontent.com/24571622/162709723-f2cbc227-883c-47cd-b8e2-a542a46d1dde.gif)
+
 
 
 
