@@ -1,5 +1,17 @@
 # ExpenSEA
-
+<table>
+<tr>
+    <td width="33%">
+      <img src="https://i.ibb.co/2WGHRrH/login.jpg" />
+    </td>
+    <td width="33%">
+      <img src="https://i.ibb.co/vD8Df15/dashboard.jpg" />
+    </td>
+    <td width="33%">
+      <img src="https://i.ibb.co/M1gzdv7/month.jpg" />
+    </td>
+  </tr>
+</table>
 Version History
 
     1.0.0 - First Build
@@ -89,23 +101,12 @@ Go to a directory where you would like to clone the repository
 	services: Various API calls for different aspects
 	styles: Styling code for views.
 
-_
+
 
 ### Preview
 #### Screenshots
 
 <table>
-  <tr>
-    <td width="33%">
-      <img src="https://i.ibb.co/2WGHRrH/login.jpg" />
-    </td>
-    <td width="33%">
-      <img src="https://i.ibb.co/vD8Df15/dashboard.jpg" />
-    </td>
-    <td width="33%">
-      <img src="https://i.ibb.co/M1gzdv7/month.jpg" />
-    </td>
-  </tr>
   <tr>
     <td width="33%">
       <img src="https://i.ibb.co/p4jrpbW/add-Edit-Expense.jpg" />
